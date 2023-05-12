@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class GameAPI : MonoBehaviour
+namespace Outgame
 {
-    [SerializeReference, SubclassSelector] INetworkImplement _inplements;
-
-    static GameAPI _instance = null;
-
-    static public INetworkImplement API => _instance?._inplements;
-
-    private void Awake()
+    public class GameAPI
     {
-        _instance = this;
+        //TODO: データから参照する形式だとプログラムの修正が少なくて済む
+        //MonoBehaviourにするとちょっと問題が起きる
+        INetworkImplement _inplements = new NodeJSImplement();
+
+        static GameAPI _instance = new GameAPI();
+
+        static public INetworkImplement API => _instance?._inplements;
     }
-
 }
-
