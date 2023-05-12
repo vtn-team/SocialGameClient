@@ -14,6 +14,13 @@ namespace Network
         public string token;
     }
 
+    
+    [Serializable]
+    public class APIRequestLogin : APIRequestBase
+    {
+        public string udid;
+    }
+
     [Serializable]
     public class APIRequestUserCreate : APIRequestBase
     {

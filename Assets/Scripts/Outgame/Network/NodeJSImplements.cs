@@ -55,8 +55,12 @@ namespace Outgame
 
         public void Login(string uuid, APICallback<APIResponceLogin> callback)
         {
-            string request = string.Format("{0}/login/{1}", BaseURI, uuid);
-            Network.WebRequest.PostRequest(request, "", (byte[] data) =>
+            string request = string.Format("{0}/login", BaseURI);
+
+            APIRequestLogin login = new APIRequestLogin();
+            login.udid = uuid;
+
+            Network.WebRequest.PostRequest(request, login, (byte[] data) =>
             {
                 var res = GetPacketBody<APIResponceLogin>(data);
                 callback?.Invoke(res);

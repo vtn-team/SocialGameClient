@@ -11,21 +11,27 @@ namespace Outgame
     {
         public string GUID { get; private set; }
 
+        [Serializable]
+        class UDID
+        {
+            public string udid = "";
+        }
 
         public void Save()
         {
-            string id = GUID;
-            LocalData.Save<string>("user", id, Application.persistentDataPath, true);
+            UDID udid = new UDID();
+            udid.udid = GUID;
+            LocalData.Save<UDID>("user", udid, Application.persistentDataPath, true);
         }
 
         static public User Load()
         {
-            string id = LocalData.Load<string>("user", Application.persistentDataPath, true);
-            if (id == null) return null;
-            if (id == "") return null;
+            UDID udid = LocalData.Load<UDID>("user", Application.persistentDataPath, true);
+            if (udid == null) return null;
+            if (udid.udid == "") return null;
 
             User user = new User();
-            user.GUID = id;
+            user.GUID = udid.udid;
             return user;
         }
 
