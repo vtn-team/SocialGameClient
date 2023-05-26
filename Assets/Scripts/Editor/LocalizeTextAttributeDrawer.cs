@@ -18,36 +18,41 @@ using Unity.VisualScripting;
 [CustomPropertyDrawer(typeof(LocalizeTextAttribute))]
 public class LocalizeTextAttributeDrawer : PropertyDrawer
 {
-    string[] _array = null;
-    List<string> _list = null;
-    int _selected = 0;
+    int _selected = 0; //選択しているテキスト
 
-    VisualElement _element = null;
-    VisualElement _container = null;
-    bool _isInit = false;
+    VisualElement _element = null; //GUIまとめるコンテナ(管理オブジェクト)
+    bool _isInit = false; //初期化フラグ
 
+    /// <summary>
+    /// GUI生成
+    /// NOTE: 作り直すときもこれを呼び出す
+    /// </summary>
     void ContainerBuild(SerializedProperty property)
     {
         if (_isInit) return;
 
+        //GUIクリア
         _element.Clear();
 
+        //参照するマスタ名を拾ってくる(※今は使ってない)
         var attr = attribute as LocalizeTextAttribute;
         var master = attr.Master;
         
-        _list = new List<string>();
-        _list.Add("None");
-        _list = _list.Concat(MasterData.GetTextKeys()).ToList();
+        //設定可能なテキストのリストを作る
+        List<string> list = new List<string>();
+        list.Add("None");
+        list = list.Concat(MasterData.GetTextKeys()).ToList();
 
-        _array = _list.ToArray();
-        _selected = _list.IndexOf(property.stringValue);
+        _selected = list.IndexOf(property.stringValue);
         if (_selected == -1) _selected = 0;
 
+        //プレビューを作る
         var text = new TextField();
         text.isReadOnly = true;
 
+        //テキストの選択フィールドと、選択後にプレビューを更新する処理
         bool isInit = true;
-        var popup = new PopupField<string>(property.name.Replace("_",""), _list, _selected, (string s) =>
+        var popup = new PopupField<string>(property.name.Replace("_",""), list, _selected, (string s) =>
         {
             //tags[idx].Index = tags[idx].TagArray.ToList().IndexOf(s);
             //BuildContainer(property);
@@ -70,6 +75,7 @@ public class LocalizeTextAttributeDrawer : PropertyDrawer
 
             if (isInit) return s;
 
+            //データの値を更新して更新をマークする
             property.stringValue = s;
             property.serializedObject.ApplyModifiedProperties();
             ContainerBuild(property);
@@ -77,36 +83,43 @@ public class LocalizeTextAttributeDrawer : PropertyDrawer
             return s;
         });
 
+        //GUI構築
         _element.Add(popup);
-        VisualElement ct = new VisualElement();
-        ct.style.flexDirection = FlexDirection.Row;
         _element.Add(text);
         _element.MarkDirtyRepaint();
 
         isInit = false;
     }
 
+    /// <summary>
+    /// GUI初期化
+    /// </summary>
     public override VisualElement CreatePropertyGUI(SerializedProperty property)
     {
+        //GUI管理オブジェクト
         _element = new VisualElement();
-        _container = new VisualElement();
 
+        //マスターデータの読み込みが終わってなければ別のUIを出して待つ
         if (!MasterData.Instance.IsSetupComplete)
         {
+            //GUI再構築
             _element.Clear();
             _element.Add(new Label() { text = "マスタデータを読み込み中です…" });
             _element.Add(new Button(() =>
             {
                 ContainerBuild(property);
             }) { text = "再読み込み" });
-            //label.style.backgroundColor = new StyleColor(Color.gray);
+            
+            //マスターデータ読み込み
             MasterData.Instance.Setup(() =>
             {
                 ContainerBuild(property);
             },true);
+
             return _element;
         }
 
+        //マスターデータがあれば通常通りGUI構築
         ContainerBuild(property);
         return _element;
     }
