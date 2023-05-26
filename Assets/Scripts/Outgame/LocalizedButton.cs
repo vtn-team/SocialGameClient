@@ -28,7 +28,7 @@ namespace Outgame
             StartCoroutine("SetText");
         }
 
-        IEnumerable SetText()
+        IEnumerator SetText()
         {
             if(!MasterData.Instance.IsSetupComplete) yield return null;
             var text = MasterData.GetLocalizedText(_textKey);
