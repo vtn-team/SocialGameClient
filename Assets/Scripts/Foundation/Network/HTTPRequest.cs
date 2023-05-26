@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,22 +6,33 @@ using UnityEngine.Networking;
 
 using static Network.WebRequest;
 
+/// <summary>
+/// リクエストを処理するワーカースクリプト
+/// NOTE: MonoBehaviourとして機能し、並列に実行できる
+/// NOTE: UniTaskで書き直せたらやってみよう
+/// </summary>
 public class HTTPRequest : MonoBehaviour
 {
+    //リトライ回数
     int RetryCount = 0;
+
+    //処理中かどうか
     public bool IsActive { get; private set; }
 
+    //リクエストヘッダ
     public class Header
     {
         public string Name;
         public string Value;
     }
 
+    //リクエスト処理につけるオプション
     public class Options
     {
-        public List<Header> Header = new List<Header>();
+        public List<Header> Header = new List<Header>(); //リクエストヘッダー
     }
 
+    //通信管理オブジェクト
     class Packet
     {
         public string Uri;
@@ -31,11 +42,20 @@ public class HTTPRequest : MonoBehaviour
         public Options Opt = null;
     }
 
-    HTTPRequest()
+    //初期化
+    void Awake()
     {
         IsActive = false;
     }
     
+    /// <summary>
+    /// リクエスト実行
+    /// </summary>
+    /// <param name="method">HTTPメソッド。GETとPOSTのみ対応</param>
+    /// <param name="uri">通信先のURL</param>
+    /// <param name="dlg">通信完了後にデータを送るデリゲート</param>
+    /// <param name="body">POSTの際に通信内容に含めるデータ</param>
+    /// <param name="opt">その他ヘッダ等の付加情報</param>
     public void Request(RequestMethod method, string uri, GetData dlg, byte[] body = null, Options opt = null)
     {
         IsActive = true;
@@ -48,6 +68,11 @@ public class HTTPRequest : MonoBehaviour
         StartCoroutine(Send(p));
     }
 
+    /// <summary>
+    /// リクエスト処理コルーチン
+    /// </summary>
+    /// <param name="p">通信情報</param>
+    /// <returns></returns>
     IEnumerator Send(Packet p)
     {
         UnityWebRequest req = null;
@@ -89,6 +114,11 @@ public class HTTPRequest : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// データ処理コールバック
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="req"></param>
     void DataParse(Packet p, UnityWebRequest req)
     {
         p.Delegate(req.downloadHandler.data);
