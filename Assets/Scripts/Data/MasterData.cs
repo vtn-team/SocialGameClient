@@ -64,17 +64,19 @@ namespace MD
         int _loadingCount = 0;
         bool _isInit = false;
         bool _useCache = false;
+        Action _onLoadCallback = null;
 
         string GetFileName(string sheetName)
         {
             return string.Format("{0}/{1}.json", DataPrefix, sheetName);
         }
 
-        public void Setup(bool useCache = false, bool forceReload = false)
+        public void Setup(Action callback, bool useCache = false, bool forceReload = false)
         {
             if (_isInit && !forceReload) return;
 
             _useCache = useCache;
+            _onLoadCallback = callback;
             _loadingCount = 0;
 
             //マスタ読み込み
@@ -123,6 +125,7 @@ namespace MD
 
             Debug.Log("MasterData Load Done.");
             _isInit = true;
+            _onLoadCallback?.Invoke();
         }
 
         /// <summary>

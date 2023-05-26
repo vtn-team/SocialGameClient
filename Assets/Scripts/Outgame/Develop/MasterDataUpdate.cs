@@ -12,7 +12,7 @@ namespace Outgame
     {
         public void MasterUpdate()
         {
-            MasterData.Instance.Setup(false,true);
+            MasterData.Instance.Setup(() => { }, false,true);
         }
     }
 }

@@ -91,9 +91,8 @@ public class LocalizeTextAttributeDrawer : PropertyDrawer
         _element = new VisualElement();
         _container = new VisualElement();
 
-        if (MasterData.Instance.IsSetupComplete == false)
+        if (!MasterData.Instance.IsSetupComplete)
         {
-            MasterData.Instance.Setup(true);
             _element.Clear();
             _element.Add(new Label() { text = "マスタデータを読み込み中です…" });
             _element.Add(new Button(() =>
@@ -101,6 +100,10 @@ public class LocalizeTextAttributeDrawer : PropertyDrawer
                 ContainerBuild(property);
             }) { text = "再読み込み" });
             //label.style.backgroundColor = new StyleColor(Color.gray);
+            MasterData.Instance.Setup(() =>
+            {
+                ContainerBuild(property);
+            },true);
             return _element;
         }
 

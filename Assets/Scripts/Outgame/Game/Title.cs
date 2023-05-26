@@ -15,7 +15,7 @@ namespace Outgame
     {
         public void Start()
         {
-            MasterData.Instance.Setup(true);
+            MasterData.Instance.Setup(() => { }, true);
         }
 
         public void Login()
