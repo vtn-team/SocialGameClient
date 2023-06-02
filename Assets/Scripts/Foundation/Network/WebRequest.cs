@@ -13,7 +13,20 @@ namespace Network
     public class WebRequest
     {
         //データ処理デリゲート
-        public delegate void GetData(byte[] result);
+        public delegate void GetData(string result);
+
+        //リクエストヘッダ
+        public class Header
+        {
+            public string Name;
+            public string Value;
+        }
+
+        //リクエスト処理につけるオプション
+        public class Options
+        {
+            public List<Header> Header = new List<Header>(); //リクエストヘッダー
+        }
 
         //メソッド
         public enum RequestMethod
@@ -23,64 +36,143 @@ namespace Network
         }
 
         //このクラスはstatic的に機能する
-        static WebRequest Instance= new WebRequest();
+        static WebRequest Instance = new WebRequest();
 
-        //リクエストを処理するワーカークラス
-        HTTPRequest[] Worker = null;
+        List<TaskRequestWorker> _worker = new List<TaskRequestWorker>();
 
         /// <summary>
         /// ワーカー設定
         /// </summary>
-        static void CheckInstance()
+        static void CheckWorkerInstance()
         {
-            //ワーカー存在チェック
-            if (Instance.Worker != null && Instance.Worker.All(w => w != null)) return;
+            if(Instance._worker.Count == 0)
+            {
+                for (int i = 0; i < 5; ++i)
+                {
+                    Instance._worker.Add(new TaskRequestWorker());
+                }
+            }
 
-            //冷えらる気にあるリクエスト処理ワーカーを拾ってくる
-            //NOTE: DontDestroyには無くても動作する。Taskに出来るとなおよい
-            Instance.Worker = GameObject.FindObjectsOfType<HTTPRequest>();
+            var active = Instance._worker.Where(r => r.IsActive == false);
+            if(active.Count() == 0)
+            {
+                Instance._worker.Add(new TaskRequestWorker());
+            }
         }
 
         /// <summary>
-        /// GET通信をする
+        /// ワーカー設定
+        /// </summary>
+        static TaskRequestWorker GetWorker()
+        {
+            TaskRequestWorker ret = null;
+            var active = Instance._worker.Where(r => r.IsActive == false);
+            if (active.Count() == 0)
+            {
+                ret = new TaskRequestWorker();
+                Instance._worker.Add(ret);
+            }
+            else
+            {
+                ret = active.First();
+            }
+            return ret;
+        }
+
+        /// <summary>
+        /// GET通信をする(asyncラッパー)
         /// </summary>
         /// <param name="uri">通信先のURL</param>
         /// <param name="dlg">データ受信コールバック</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public void GetRequest(string uri, GetData dlg, HTTPRequest.Options opt = null)
+        static public async Task<string> GetRequest(string uri, Options opt = null)
         {
-            CheckInstance();
-            var worker = Instance.Worker.Where(r => r.IsActive == false).First();
-            worker.Request(RequestMethod.GET, uri, dlg, null, opt);
+            CheckWorkerInstance();
+            var worker = GetWorker();
+            return await worker.GetRequest(uri, opt);
         }
 
         /// <summary>
-        /// POST通信をする
+        /// POST通信をする(asyncラッパー)
         /// </summary>
         /// <param name="uri">通信先のURL</param>
         /// <param name="body">サーバに送信する内容</param>
         /// <param name="dlg">データ受信コールバック</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public void PostRequest<T>(string uri, T body, GetData dlg, HTTPRequest.Options opt = null)
+        static public async Task<string> PostRequest<T>(string uri, T body, Options opt = null)
         {
-            CheckInstance();
-            var worker = Instance.Worker.Where(r => r.IsActive == false).First();
+            CheckWorkerInstance();
+            var worker = GetWorker();
             string json = JsonUtility.ToJson(body);
-            worker.Request(RequestMethod.POST, uri, dlg, Encoding.UTF8.GetBytes(json), opt);
+            return await worker.PostRequest(uri, json, opt);
         }
 
         /// <summary>
-        /// POST通信をする
+        /// POST通信をする(asyncラッパー)
+        /// </summary>
+        /// <param name="uri">通信先のURL</param>
+        /// <param name="body">サーバに送信する内容</param>
+        /// <param name="opt">ヘッダなど追加で含む情報</param>
+        static public async Task<string> PostRequest<T>(string uri, string body, Options opt = null)
+        {
+            CheckWorkerInstance();
+            var worker = GetWorker();
+            return await worker.PostRequest(uri, body, opt);
+        }
+
+
+        /// <summary>
+        /// GET通信をする(コールバック運用)
+        /// </summary>
+        /// <param name="uri">通信先のURL</param>
+        /// <param name="dlg">データ受信コールバック</param>
+        /// <param name="opt">ヘッダなど追加で含む情報</param>
+        static public void GetRequest(string uri, GetData dlg, Options opt = null)
+        {
+            Task.Run(async () =>
+            {
+                CheckWorkerInstance();
+                var worker = GetWorker();
+                string result = await worker.GetRequest(uri, opt);
+                dlg?.Invoke(result);
+            });
+        }
+
+        /// <summary>
+        /// POST通信をする(コールバック運用)
         /// </summary>
         /// <param name="uri">通信先のURL</param>
         /// <param name="body">サーバに送信する内容</param>
         /// <param name="dlg">データ受信コールバック</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public void PostRequest<T>(string uri, byte[] body, GetData dlg, HTTPRequest.Options opt = null)
+        static public void PostRequest<T>(string uri, T body, GetData dlg, Options opt = null)
         {
-            CheckInstance();
-            var worker = Instance.Worker.Where(r => r.IsActive == false).First();
-            worker.Request(RequestMethod.POST, uri, dlg, body, opt);
+            Task.Run(async () =>
+            {
+                CheckWorkerInstance();
+                var worker = GetWorker();
+                string json = JsonUtility.ToJson(body);
+                string result = await worker.PostRequest(uri, json, opt);
+                dlg?.Invoke(result);
+            });
+        }
+
+        /// <summary>
+        /// POST通信をする(コールバック運用)
+        /// </summary>
+        /// <param name="uri">通信先のURL</param>
+        /// <param name="body">サーバに送信する内容</param>
+        /// <param name="dlg">データ受信コールバック</param>
+        /// <param name="opt">ヘッダなど追加で含む情報</param>
+        static public void PostRequest<T>(string uri, string body, GetData dlg, Options opt = null)
+        {
+            Task.Run(async () =>
+            {
+                CheckWorkerInstance();
+                var worker = GetWorker();
+                string result = await worker.PostRequest(uri, body, opt);
+                dlg?.Invoke(result);
+            });
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.Networking;
 
 using static Network.WebRequest;
+using System.Text;
 
 /// <summary>
 /// リクエストを処理するワーカースクリプト
@@ -18,19 +19,6 @@ public class HTTPRequest : MonoBehaviour
 
     //処理中かどうか
     public bool IsActive { get; private set; }
-
-    //リクエストヘッダ
-    public class Header
-    {
-        public string Name;
-        public string Value;
-    }
-
-    //リクエスト処理につけるオプション
-    public class Options
-    {
-        public List<Header> Header = new List<Header>(); //リクエストヘッダー
-    }
 
     //通信管理オブジェクト
     class Packet
@@ -121,7 +109,7 @@ public class HTTPRequest : MonoBehaviour
     /// <param name="req"></param>
     void DataParse(Packet p, UnityWebRequest req)
     {
-        p.Delegate(req.downloadHandler.data);
+        p.Delegate(Encoding.UTF8.GetString(req.downloadHandler.data));
         IsActive = false;
     }    
 }
