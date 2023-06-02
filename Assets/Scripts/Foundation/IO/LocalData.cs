@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using Unity.VisualScripting.FullSerializer;
 
 class LocalData
 {
@@ -42,6 +44,42 @@ class LocalData
 
         string json = Encoding.UTF8.GetString(arr);
         return JsonUtility.FromJson<T>(json);
+    }
+
+    static public async Task<T> LoadAsync<T>(string file, string path = null, bool fenc = false)
+    {
+        try
+        {
+            if (path == null)
+            {
+                path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
+            }
+
+            string json = "";
+
+            using (FileStream fs = new FileStream(path + "/" + file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (StreamReader reader = new StreamReader(fs, System.Text.Encoding.UTF8))
+            {
+                json = await reader.ReadToEndAsync();
+
+#if RELEASE
+        fenc = true;
+#endif
+                if (fenc)
+                {
+                    byte[] bytes = Encoding.UTF8.GetBytes(json);
+                    bytes = AesDecrypt(bytes);
+                    json = Encoding.UTF8.GetString(bytes);
+                }
+            }
+
+            return JsonUtility.FromJson<T>(json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        return default(T);
     }
 
     /// <summary>

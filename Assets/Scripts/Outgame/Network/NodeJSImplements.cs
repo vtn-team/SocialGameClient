@@ -51,6 +51,29 @@ namespace Outgame
             });
         }
 
+        public async Task<APIResponceLogin> Login(string uuid)
+        {
+            string request = string.Format("{0}/login", BaseURI);
+
+            APIRequestLogin login = new APIRequestLogin();
+            login.udid = uuid;
+
+            string json = await PostRequest(request, login);
+            var res = GetPacketBody<APIResponceLogin>(json);
+            _session = res.session;
+            _token = res.token;
+            return res;
+        }
+
+        public async Task<APIResponceGetCards> GetCards()
+        {
+            string request = string.Format("{0}/ud/cards?session={1}", BaseURI, _session);
+
+            string json = await GetRequest(request);
+            var res = GetPacketBody<APIResponceGetCards>(json);
+            return res;
+        }
+
         public void Login(string uuid, APICallback<APIResponceLogin> callback)
         {
             string request = string.Format("{0}/login", BaseURI);

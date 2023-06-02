@@ -35,6 +35,17 @@ namespace Outgame
             return user;
         }
 
+        static public async Task<User> LoadAsync()
+        {
+            UDID udid = await LocalData.LoadAsync<UDID>("user", Application.persistentDataPath, true);
+            if (udid == null) return null;
+            if (udid.udid == "") return null;
+
+            User user = new User();
+            user.GUID = udid.udid;
+            return user;
+        }
+
         static public User Create(string id)
         {
             User user = new User();
