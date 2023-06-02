@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using static INetworkImplement;
+using static Network.WebRequest;
 
 namespace Outgame
 {
@@ -22,9 +21,8 @@ namespace Outgame
         private string _token = "";
         private string _session = "";
 
-        T GetPacketBody<T>(byte[] data) where T : APIResponceBase
+        T GetPacketBody<T>(string json) where T : APIResponceBase
         {
-            string json = Encoding.UTF8.GetString(data);
             Debug.Log(json);
             T res = JsonUtility.FromJson<T>(json);
 
@@ -40,15 +38,15 @@ namespace Outgame
 
         public void VersionCheck(APICallback<APIResponceBase> callback)
         {
-            Network.WebRequest.GetRequest(VersionCheckURI, (byte[] data) =>
+            GetRequest(VersionCheckURI, (string json) =>
             {
-                callback?.Invoke(GetPacketBody<APIResponceBase>(data));
+                callback?.Invoke(GetPacketBody<APIResponceBase>(json));
             },
-            new HTTPRequest.Options()
+            new WebRequest.Options()
             {
-                Header = new List<HTTPRequest.Header>()
+                Header = new List<WebRequest.Header>()
                 {
-                    new HTTPRequest.Header(){ Name = "x-api-key", Value = apiKey }
+                    new WebRequest.Header(){ Name = "x-api-key", Value = apiKey }
                 }
             });
         }
@@ -60,12 +58,23 @@ namespace Outgame
             APIRequestLogin login = new APIRequestLogin();
             login.udid = uuid;
 
-            Network.WebRequest.PostRequest(request, login, (byte[] data) =>
+            PostRequest(request, login, (string json) =>
             {
-                var res = GetPacketBody<APIResponceLogin>(data);
-                callback?.Invoke(res);
+                var res = GetPacketBody<APIResponceLogin>(json);
                 _session = res.session;
                 _token = res.token;
+                callback?.Invoke(res);
+            });
+        }
+
+        public void GetCards(APICallback<APIResponceGetCards> callback)
+        {
+            string request = string.Format("{0}/ud/cards?session={1}", BaseURI, _session);
+
+            GetRequest(request, (string data) =>
+            {
+                var res = GetPacketBody<APIResponceGetCards>(data);
+                callback?.Invoke(res);
             });
         }
 
@@ -78,9 +87,26 @@ namespace Outgame
             user.session = _session;
             user.token = _token;
 
-            Network.WebRequest.PostRequest(request, user, (byte[] data) =>
+            PostRequest(request, user, (string data) =>
             {
                 var res = GetPacketBody<APIResponceUserCreate>(data);
+                callback?.Invoke(res);
+            });
+        }
+
+        public void Gacha(int gachaId, int drawCount, APICallback<APIResponceGachaDraw> callback)
+        {
+            string request = string.Format("{0}/gacha/draw", BaseURI);
+
+            APIRequestGachaDraw user = new APIRequestGachaDraw();
+            user.gachaId = gachaId;
+            user.drawCount = drawCount;
+            user.session = _session;
+            user.token = _token;
+
+            PostRequest(request, user, (string data) =>
+            {
+                var res = GetPacketBody<APIResponceGachaDraw>(data);
                 callback?.Invoke(res);
             });
         }

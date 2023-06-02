@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data;
 using System.Text;
+using static Network.WebRequest;
 
 namespace MD
 {
@@ -140,9 +141,8 @@ namespace MD
             if (data == null || !_useCache)
             {
                 _loadingCount++;
-                Network.WebRequest.GetRequest(string.Format("{0}?sheet={1}", URI, sheetName), (byte[] data) =>
+                GetRequest(string.Format("{0}?sheet={1}", URI, sheetName), (string json) =>
                 {
-                    string json = Encoding.UTF8.GetString(data);
                     Debug.Log(json);
                     T dt = JsonUtility.FromJson<T>(json);
 

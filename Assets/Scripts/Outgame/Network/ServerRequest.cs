@@ -26,4 +26,11 @@ namespace Network
     {
         public string name;
     }
+
+    [Serializable]
+    public class APIRequestGachaDraw : APIRequestBase
+    {
+        public int gachaId;
+        public int drawCount;
+    }
 }
