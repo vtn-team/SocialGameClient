@@ -6,8 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting.FullSerializer;
+using Cysharp.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 class LocalData
 {
@@ -21,32 +21,40 @@ class LocalData
     /// <returns></returns>
     static public T Load<T>(string file, string path = null, bool fenc = false)
     {
-        if (path == null)
+        try
         {
-            path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
-        }
+            if (path == null)
+            {
+                path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
+            }
 
-        //ファイルがなかったらnullで返す
-        if (!File.Exists(path + "/" + file))
-        {
-            return default;
-        }
+            //ファイルがなかったらnullで返す
+            if (!File.Exists(path + "/" + file))
+            {
+                return default;
+            }
 
-        var arr = File.ReadAllBytes(path + "/" + file);
+            var arr = File.ReadAllBytes(path + "/" + file);
 #if RELEASE
-        arr = AesDecrypt(arr);
-#else
-        if (fenc)
-        {
             arr = AesDecrypt(arr);
-        }
+#else
+            if (fenc)
+            {
+                arr = AesDecrypt(arr);
+            }
 #endif
-
-        string json = Encoding.UTF8.GetString(arr);
-        return JsonUtility.FromJson<T>(json);
+            string json = Encoding.UTF8.GetString(arr);
+            return JsonUtility.FromJson<T>(json);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Load{file}");
+            Debug.LogError(ex.Message);
+        }
+        return default(T);
     }
 
-    static public async Task<T> LoadAsync<T>(string file, string path = null, bool fenc = false)
+    static public async UniTask<T> LoadAsync<T>(string file, string path = null, bool fenc = false)
     {
         try
         {
@@ -58,26 +66,26 @@ class LocalData
             string json = "";
 
             using (FileStream fs = new FileStream(path + "/" + file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            using (StreamReader reader = new StreamReader(fs, System.Text.Encoding.UTF8))
             {
-                json = await reader.ReadToEndAsync();
+                var bytes = new byte[fs.Length];
+                await fs.ReadAsync(bytes, 0, bytes.Length);
 
 #if RELEASE
         fenc = true;
 #endif
                 if (fenc)
                 {
-                    byte[] bytes = Encoding.UTF8.GetBytes(json);
                     bytes = AesDecrypt(bytes);
-                    json = Encoding.UTF8.GetString(bytes);
                 }
+                json = Encoding.UTF8.GetString(bytes);
             }
 
             return JsonUtility.FromJson<T>(json);
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Debug.LogError($"LoadAsync{file}");
+            Debug.LogError(ex.Message);
         }
         return default(T);
     }
@@ -93,29 +101,69 @@ class LocalData
     /// <returns></returns>
     static public void Save<T>(string file, T data, string path = null, bool fenc = false)
     {
-        if (path == null)
+        try
         {
-            path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
-        }
+            if (path == null)
+            {
+                path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
+            }
 
-        var json = JsonUtility.ToJson(data);
-        byte[] arr = Encoding.UTF8.GetBytes(json);
+            var json = JsonUtility.ToJson(data);
+            byte[] arr = Encoding.UTF8.GetBytes(json);
 #if RELEASE
-        arr = AesEncrypt(arr);
-#else
-        if (fenc)
-        {
             arr = AesEncrypt(arr);
-        }
+#else
+            if (fenc)
+            {
+                arr = AesEncrypt(arr);
+            }
 #endif
-        var pathes = (path + "/" + file).Split('/').ToList();
-        pathes.RemoveAt(pathes.Count - 1);
-        var dir = string.Join("/", pathes);
-        if (!Directory.Exists(dir))
-        {
-            Directory.CreateDirectory(dir);
+            var pathes = (path + "/" + file).Split('/').ToList();
+            pathes.RemoveAt(pathes.Count - 1);
+            var dir = string.Join("/", pathes);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+            File.WriteAllBytes(path + "/" + file, arr);
         }
-        File.WriteAllBytes(path + "/" + file, arr);
+        catch (Exception ex)
+        {
+            Debug.LogError($"Save{file}");
+            Debug.LogError(ex.Message);
+        }
+    }
+
+    static public async UniTask SaveAsync<T>(string file, T data, string path = null, bool fenc = false)
+    {
+        try
+        {
+            if (path == null)
+            {
+                path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
+            }
+
+            var json = JsonUtility.ToJson(data);
+            byte[] bytes = Encoding.UTF8.GetBytes(json);
+
+            using (FileStream fs = new FileStream(path + "/" + file, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
+            {
+#if RELEASE
+        fenc = true;
+#endif
+                if (fenc)
+                {
+                    bytes = AesEncrypt(bytes);
+                }
+
+                await fs.WriteAsync(bytes, 0, bytes.Length);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"SaveAsync{file}");
+            Debug.LogError(ex.Message);
+        }
     }
 
     /// <summary>

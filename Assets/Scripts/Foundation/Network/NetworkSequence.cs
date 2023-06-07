@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks.Linq;
+﻿using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -11,9 +12,9 @@ public class NetworkSequence
     private NetworkSequence() { }
 
 
-    Dictionary<string, Task> _sequenceDeck = new Dictionary<string, Task>();
+    Dictionary<string, UniTask> _sequenceDeck = new Dictionary<string, UniTask>();
 
-    static public bool RegisterSequence(string key, Task task)
+    static public bool RegisterSequence(string key, UniTask task)
     {
         if (_instance._sequenceDeck.ContainsKey(key))
         {
@@ -25,7 +26,7 @@ public class NetworkSequence
         return true;
     }
 
-    static public bool DeleteSequence(string key, Task task)
+    static public bool DeleteSequence(string key, UniTask task)
     {
         if (!_instance._sequenceDeck.ContainsKey(key))
         {

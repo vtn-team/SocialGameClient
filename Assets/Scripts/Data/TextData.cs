@@ -24,6 +24,7 @@ namespace MD
     {
         public int Id;
         public string Name;
+        public string Resource;
         public int Rare;
         public int EffectId;
     }

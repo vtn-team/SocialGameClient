@@ -1,4 +1,5 @@
-﻿using MD;
+﻿using Cysharp.Threading.Tasks;
+using MD;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,10 +39,15 @@ namespace Outgame
             }
 
             //遷移しながらログインシーケンスを進める
-            NetworkSequence.RegisterSequence("Login", Task.Run(async () => 
+            NetworkSequence.RegisterSequence("Login", UniTask.RunOnThreadPool(async () => 
             {
                 //ログインAPI
                 var login = await GameAPI.API.Login(guid);
+                if (login.udid == null)
+                {
+                    UniTask.Post(NewUser);
+                    return;
+                }
 
                 //各種データ取得
                 var cards = await GameAPI.API.GetCards();

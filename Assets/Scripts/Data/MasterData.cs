@@ -7,6 +7,7 @@ using System.Linq;
 using System.Data;
 using System.Text;
 using static Network.WebRequest;
+using Cysharp.Threading.Tasks;
 
 namespace MD
 {
@@ -16,12 +17,13 @@ namespace MD
     public class MasterData
     {
         //設定系
-        const string URI = "";
+        string URI = "";
         const string DataPrefix = "MasterData";
 
         //シングルトン運用
         static MasterData _instance = new MasterData();
         static public MasterData Instance => _instance;
+
 
         //ゲーム中のマスターデータ
         /// <summary>
@@ -36,6 +38,14 @@ namespace MD
                 foreach (var d in data)
                 {
                     K key = mapper.Invoke(d);
+                    if (key == null) continue;
+
+                    if(ret.Data.ContainsKey(key))
+                    {
+                        Debug.Log($"duplicate key:{key}");
+                        continue;
+                    }
+
                     ret.Data.Add(key, d);
                 }
                 return ret;
@@ -72,9 +82,11 @@ namespace MD
             return string.Format("{0}/{1}.json", DataPrefix, sheetName);
         }
 
-        public void Setup(Action callback, bool useCache = false, bool forceReload = false)
+        public async void Setup(Action callback, bool useCache = false, bool forceReload = false)
         {
             if (_isInit && !forceReload) return;
+
+            URI = GameSetting.MasterDataAPIURI;
 
             _useCache = useCache;
             _onLoadCallback = callback;
@@ -82,32 +94,36 @@ namespace MD
 
             //マスタ読み込み
             Debug.Log("MasterData Load Start.");
+
+            List<string> masterDataList = new List<string>() { "JP_Text", "EN_Text", "Card", "Effect" };
             //NOTE: そもそもコードで参照するのであればべた書きもあり
-            LoadMasterData<TextMaster>("JP_Text");
-            LoadMasterData<TextMaster>("EN_Text");
-            LoadMasterData<CardMaster>("Card");
-            LoadMasterData<EffectMaster>("Effect");
-            MasterDataCheck();
+            List<UniTask> masterDataDownloads = new List<UniTask>()
+            {
+                LoadMasterData<TextMaster>("JP_Text"),
+                LoadMasterData<TextMaster>("EN_Text"),
+                LoadMasterData<CardMaster>("Card"),
+                LoadMasterData<EffectMaster>("Effect"),
+            };
+            await UniTask.WhenAll(masterDataDownloads.ToArray());
+            await ConstructMasterData();
         }
 
         /// <summary>
         /// 最後の整形処理をする
         /// </summary>
-        private void MasterDataCheck()
+        private async UniTask ConstructMasterData()
         {
-            if (_loadingCount > 0) return;
-
             //マスタ結合 or 整形
 
             //テキストマスタを設定する
             //日本語を使う
             //TODO: 言語設定を見る
-            var jp_text = LocalData.Load<TextMaster>(GetFileName("JP_Text"));
-            _textMaster = PrettyData<string, TextData>.Create(jp_text.Data, (TextData line) => { return line.Key; });
+            var jp_text = await LocalData.LoadAsync<TextMaster>(GetFileName("JP_Text"));
+            _textMaster = PrettyData<string, TextData>.Create(jp_text.Data, (TextData line) => { return line.Key == "" ? null : line.Key; });
 
             //カードマスタをマージする
-            var card = LocalData.Load<CardMaster>(GetFileName("Card"));
-            var effect = LocalData.Load<EffectMaster>(GetFileName("Effect"));
+            var card = await LocalData.LoadAsync<CardMaster>(GetFileName("Card"));
+            var effect = await LocalData.LoadAsync<EffectMaster>(GetFileName("Effect"));
             var efectList = PrettyData<int, EffectData>.Create(effect.Data, (EffectData line) => { return line.Id; });
 
             List<Card> cards = new List<Card>();
@@ -134,24 +150,18 @@ namespace MD
         /// </summary>
         /// <typeparam name="T">マスタの型</typeparam>
         /// <param name="sheetName">シート名</param>
-        private void LoadMasterData<T>(string sheetName)
+        private async UniTask LoadMasterData<T>(string sheetName)
         {
             var filename = GetFileName(sheetName);
-            var data = LocalData.Load<T>(filename);
+            var data = await LocalData.LoadAsync<T>(filename);
             if (data == null || !_useCache)
             {
                 _loadingCount++;
-                GetRequest(string.Format("{0}?sheet={1}", URI, sheetName), (string json) =>
-                {
-                    Debug.Log(json);
-                    T dt = JsonUtility.FromJson<T>(json);
-
-                    LocalData.Save<T>(filename, dt);
-                    Debug.Log("Network download. : " + filename + " / " + json + "/" + filename);
-                    --_loadingCount;
-
-                    MasterDataCheck();
-                });
+                string json = await GetRequest(string.Format("{0}?sheet={1}", URI, sheetName));
+                Debug.Log(json);
+                T dt = JsonUtility.FromJson<T>(json);
+                await LocalData.SaveAsync<T>(filename, dt);
+                Debug.Log("Network download. : " + filename + " / " + json + "/" + filename);
             }
             else
             {

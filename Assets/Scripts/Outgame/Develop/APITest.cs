@@ -1,6 +1,7 @@
 ﻿using MD;
 using Outgame;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
@@ -14,14 +15,23 @@ namespace Outgame
     /// </summary>
     public class APITest : MonoBehaviour
     {
+        [SerializeField] bool _isAutoLogin = true;
+        [SerializeField, ReadOnly(true)] string _guid;
+        [SerializeField, ReadOnly(true)] string _name;
+        [SerializeField, ReadOnly(true)] int _userId;
+
         private void Start()
         {
+            if (!_isAutoLogin) return;
+
             User user = User.Load();
             string guid = "";
             if (user != null)
             {
                 guid = user.GUID;
             }
+            _guid = guid;
+
             GameAPI.API.Login(guid, LoginCallback);
         }
 
@@ -29,6 +39,9 @@ namespace Outgame
         {
             //var cards = UserDataCache.Load<APIResponceGetCards>("Cards");
             //if (cards != null) return;
+
+            _name = data.name;
+            _userId = data.id;
 
             GameAPI.API.GetCards((cds) =>
             {

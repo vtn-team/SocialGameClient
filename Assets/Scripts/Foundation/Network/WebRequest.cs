@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -39,6 +42,7 @@ namespace Network
         static WebRequest Instance = new WebRequest();
 
         List<TaskRequestWorker> _worker = new List<TaskRequestWorker>();
+        CancellationToken ct;
 
         /// <summary>
         /// ワーカー設定
@@ -85,7 +89,7 @@ namespace Network
         /// <param name="uri">通信先のURL</param>
         /// <param name="dlg">データ受信コールバック</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public async Task<string> GetRequest(string uri, Options opt = null)
+        static public async UniTask<string> GetRequest(string uri, Options opt = null)
         {
             CheckWorkerInstance();
             var worker = GetWorker();
@@ -99,7 +103,7 @@ namespace Network
         /// <param name="body">サーバに送信する内容</param>
         /// <param name="dlg">データ受信コールバック</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public async Task<string> PostRequest<T>(string uri, T body, Options opt = null)
+        static public async UniTask<string> PostRequest<T>(string uri, T body, Options opt = null)
         {
             CheckWorkerInstance();
             var worker = GetWorker();
@@ -113,7 +117,7 @@ namespace Network
         /// <param name="uri">通信先のURL</param>
         /// <param name="body">サーバに送信する内容</param>
         /// <param name="opt">ヘッダなど追加で含む情報</param>
-        static public async Task<string> PostRequest<T>(string uri, string body, Options opt = null)
+        static public async UniTask<string> PostRequest<T>(string uri, string body, Options opt = null)
         {
             CheckWorkerInstance();
             var worker = GetWorker();
@@ -129,13 +133,17 @@ namespace Network
         /// <param name="opt">ヘッダなど追加で含む情報</param>
         static public void GetRequest(string uri, GetData dlg, Options opt = null)
         {
-            Task.Run(async () =>
+            CheckWorkerInstance();
+            UniTask.RunOnThreadPool(async() =>
             {
-                CheckWorkerInstance();
                 var worker = GetWorker();
+                Debug.Log(uri);
                 string result = await worker.GetRequest(uri, opt);
-                dlg?.Invoke(result);
-            });
+                UniTask.Post(() =>
+                {
+                    dlg?.Invoke(result);
+                });
+            }).Forget();
         }
 
         /// <summary>
@@ -147,14 +155,17 @@ namespace Network
         /// <param name="opt">ヘッダなど追加で含む情報</param>
         static public void PostRequest<T>(string uri, T body, GetData dlg, Options opt = null)
         {
-            Task.Run(async () =>
+            CheckWorkerInstance();
+            UniTask.RunOnThreadPool(async () =>
             {
-                CheckWorkerInstance();
                 var worker = GetWorker();
                 string json = JsonUtility.ToJson(body);
                 string result = await worker.PostRequest(uri, json, opt);
-                dlg?.Invoke(result);
-            });
+                UniTask.Post(() =>
+                {
+                    dlg?.Invoke(result);
+                });
+            }).Forget();
         }
 
         /// <summary>
@@ -166,13 +177,16 @@ namespace Network
         /// <param name="opt">ヘッダなど追加で含む情報</param>
         static public void PostRequest<T>(string uri, string body, GetData dlg, Options opt = null)
         {
-            Task.Run(async () =>
+            CheckWorkerInstance();
+            UniTask.RunOnThreadPool(async () =>
             {
-                CheckWorkerInstance();
                 var worker = GetWorker();
                 string result = await worker.PostRequest(uri, body, opt);
-                dlg?.Invoke(result);
-            });
+                UniTask.Post(() =>
+                {
+                    dlg?.Invoke(result);
+                });
+            }).Forget();
         }
     }
 }

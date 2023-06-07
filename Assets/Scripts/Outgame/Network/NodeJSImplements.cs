@@ -1,4 +1,5 @@
-﻿using Network;
+﻿using Cysharp.Threading.Tasks;
+using Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,6 @@ namespace Outgame
 {
     public class NodeJSImplement : INetworkImplement
     {
-        //TODO: ログインAPIはいずれ分ける
-        //const string LoginBaseURI = "https://rtpwg9bexj.execute-api.ap-northeast-1.amazonaws.com/default";
-        const string VersionCheckURI = "https://f8eo8lpdw0.execute-api.ap-northeast-1.amazonaws.com/default/GameVersionCheck";
-        const string apiKey = "ab4qX6DzCH8SlOMASgF8AapOdsTSg3i2t5oh89b9";
-        const string BaseURI = "http://node.vtn-game.com";
-
         private string _token = "";
         private string _session = "";
 
@@ -36,24 +31,9 @@ namespace Outgame
             return res;
         }
 
-        public void VersionCheck(APICallback<APIResponceBase> callback)
+        public async UniTask<APIResponceLogin> Login(string uuid)
         {
-            GetRequest(VersionCheckURI, (string json) =>
-            {
-                callback?.Invoke(GetPacketBody<APIResponceBase>(json));
-            },
-            new WebRequest.Options()
-            {
-                Header = new List<WebRequest.Header>()
-                {
-                    new WebRequest.Header(){ Name = "x-api-key", Value = apiKey }
-                }
-            });
-        }
-
-        public async Task<APIResponceLogin> Login(string uuid)
-        {
-            string request = string.Format("{0}/login", BaseURI);
+            string request = string.Format("{0}/login", GameSetting.LoginAPIURI);
 
             APIRequestLogin login = new APIRequestLogin();
             login.udid = uuid;
@@ -65,9 +45,9 @@ namespace Outgame
             return res;
         }
 
-        public async Task<APIResponceGetCards> GetCards()
+        public async UniTask<APIResponceGetCards> GetCards()
         {
-            string request = string.Format("{0}/ud/cards?session={1}", BaseURI, _session);
+            string request = string.Format("{0}/ud/cards?session={1}", GameSetting.GameAPIURI, _session);
 
             string json = await GetRequest(request);
             var res = GetPacketBody<APIResponceGetCards>(json);
@@ -76,7 +56,7 @@ namespace Outgame
 
         public void Login(string uuid, APICallback<APIResponceLogin> callback)
         {
-            string request = string.Format("{0}/login", BaseURI);
+            string request = string.Format("{0}/login", GameSetting.LoginAPIURI);
 
             APIRequestLogin login = new APIRequestLogin();
             login.udid = uuid;
@@ -92,7 +72,7 @@ namespace Outgame
 
         public void GetCards(APICallback<APIResponceGetCards> callback)
         {
-            string request = string.Format("{0}/ud/cards?session={1}", BaseURI, _session);
+            string request = string.Format("{0}/ud/cards?session={1}", GameSetting.GameAPIURI, _session);
 
             GetRequest(request, (string data) =>
             {
@@ -103,7 +83,7 @@ namespace Outgame
 
         public void CreateUser(string name, APICallback<APIResponceUserCreate> callback)
         {
-            string request = string.Format("{0}/user/create", BaseURI);
+            string request = string.Format("{0}/user/create", GameSetting.GameAPIURI);
 
             APIRequestUserCreate user = new APIRequestUserCreate();
             user.name = name;
@@ -119,7 +99,7 @@ namespace Outgame
 
         public void Gacha(int gachaId, int drawCount, APICallback<APIResponceGachaDraw> callback)
         {
-            string request = string.Format("{0}/gacha/draw", BaseURI);
+            string request = string.Format("{0}/gacha/draw", GameSetting.GameAPIURI);
 
             APIRequestGachaDraw user = new APIRequestGachaDraw();
             user.gachaId = gachaId;

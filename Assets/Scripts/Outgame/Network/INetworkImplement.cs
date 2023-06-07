@@ -1,4 +1,5 @@
-﻿using Outgame;
+﻿using Cysharp.Threading.Tasks;
+using Outgame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ public interface INetworkImplement
     public delegate void APICallback<T>(T dataClass);
 
     //async
-    Task<APIResponceLogin> Login(string uuid);
-    Task<APIResponceGetCards> GetCards();
+    UniTask<APIResponceLogin> Login(string uuid);
+    UniTask<APIResponceGetCards> GetCards();
     //
 
     //callback
