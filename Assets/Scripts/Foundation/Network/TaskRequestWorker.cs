@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using UnityEngine;
 
 using static Network.WebRequest;
 using System.Net.Http;
@@ -48,15 +50,18 @@ namespace Network
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             try
             {
+                IsActive = true;
                 using HttpResponseMessage response = await _client.PostAsync(uri, new StringContent(body, Encoding.UTF8, "application/json"));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
+                IsActive = false;
                 return responseBody;
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                Debug.Log("\nException Caught!");
+                Debug.Log("Message :"+ e.Message);
+                IsActive = false;
             }
 
             return null;
@@ -68,15 +73,18 @@ namespace Network
             // Call asynchronous network methods in a try/catch block to handle exceptions.
             try
             {
+                IsActive = true;
                 using HttpResponseMessage response = await _client.GetAsync(uri);
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
+                IsActive = false;
                 return responseBody;
             }
             catch (HttpRequestException e)
             {
-                Console.WriteLine("\nException Caught!");
-                Console.WriteLine("Message :{0} ", e.Message);
+                Debug.Log("\nException Caught!");
+                Debug.Log("Message :" + e.Message);
+                IsActive = false;
             }
 
             return null;
