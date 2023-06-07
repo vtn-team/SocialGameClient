@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Packed Assets
+  m_EditorClassIdentifier: 
+  m_GroupName: Packed Assets
+  m_Data:
+    m_SerializedData: []
+  m_GUID: baa4de87fe25c3a4aa3a20e81a163508
+  m_SerializeEntries:
+  - m_GUID: 11cecfe6c3f60874faee9c77f95d3534
+    m_Address: Assets/DataAsset/Card/ampere.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0861b2de43855a43a7193039bf534dd
+    m_Address: Assets/DataAsset/Card/aristoteles.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a4accff77dc22e24295760b8f4d944e9
+    m_Address: Assets/DataAsset/Card/copernicus.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b6f074691a7e704780d6e65131542db
+    m_Address: Assets/DataAsset/Card/wright_brothers.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: da791fad8b52d054d9c131310829594e
+    m_Address: Assets/DataAsset/Card/edison.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f8d140bbd40594142a6d81eee0afbbdf
+    m_Address: Assets/DataAsset/Card/einstein.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5145fe22ea954841a771b6505f793d8
+    m_Address: Assets/DataAsset/Card/faraday.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 34a3f897d6745494ca61e29a14056965
+    m_Address: Assets/DataAsset/Card/fleming.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b38934ae15ca4494699eff90e6e1a44a
+    m_Address: Assets/DataAsset/Card/galileo.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59a44633e577b8642b6e9987f0610b74
+    m_Address: Assets/DataAsset/Card/gauss.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ef64a702b4319fd41bda11f77f133d5b
+    m_Address: Assets/DataAsset/Card/graham_bell.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5dbe0a6b47581fa4d8a3a73b7e14d626
+    m_Address: Assets/DataAsset/Card/hippocrates.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 63a21f9bb9dd5c2418cddb089de842b6
+    m_Address: Assets/DataAsset/Card/koumei.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bc63d86a9fc0cd44f98381ac467480dc
+    m_Address: Assets/DataAsset/Card/leibniz.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 55ae49c2a0396924cb4f3b2cafb8ff1d
+    m_Address: Assets/DataAsset/Card/newton.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4ff59049b78f14247a80b11b85eaa575
+    m_Address: Assets/DataAsset/Card/nikola_tesla.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0ae13b6b6466274a80ddbf1df7b1d28
+    m_Address: Assets/DataAsset/Card/platon.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 914607715e2f0d34b95ce8cf7010a7cf
+    m_Address: Assets/DataAsset/Card/pythagoras.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 74af115ca5e463f4da0759c16b8c2796
+    m_Address: Assets/DataAsset/Card/socrates.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 124e9a776b409da4aa4a61ddc17e3e6d
+    m_Address: Assets/DataAsset/Card/taresu.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8d485b9bea127de49961f286c7c8f36a, type: 2}
+    - {fileID: 11400000, guid: eb25a5a50c09cf64c98b31e643813439, type: 2}

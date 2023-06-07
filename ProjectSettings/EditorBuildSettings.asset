@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Develop/APITest.unity
+    guid: 77b3b14f3b00d5c4986ddd808bd6a944
+  - enabled: 1
     path: Assets/Scenes/Develop/MasterDataUpdate.unity
     guid: a4a5e6b469b696f4499d9861a74d3c86
   - enabled: 1
@@ -14,4 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Field.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 18f1d68e8a75d604eac33e7904d97ce6, type: 2}
