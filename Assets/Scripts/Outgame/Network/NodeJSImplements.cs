@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static INetworkImplement;
+using static IGameAPIImplement;
 using static Network.WebRequest;
 
 namespace Outgame
 {
-    public class NodeJSImplement : INetworkImplement
+    public class NodeJSImplement : IGameAPIImplement
     {
         private string _token = "";
         private string _session = "";
@@ -54,34 +54,7 @@ namespace Outgame
             return res;
         }
 
-        public void Login(string uuid, APICallback<APIResponceLogin> callback)
-        {
-            string request = string.Format("{0}/login", GameSetting.LoginAPIURI);
-
-            APIRequestLogin login = new APIRequestLogin();
-            login.udid = uuid;
-
-            PostRequest(request, login, (string json) =>
-            {
-                var res = GetPacketBody<APIResponceLogin>(json);
-                _session = res.session;
-                _token = res.token;
-                callback?.Invoke(res);
-            });
-        }
-
-        public void GetCards(APICallback<APIResponceGetCards> callback)
-        {
-            string request = string.Format("{0}/ud/cards?session={1}", GameSetting.GameAPIURI, _session);
-
-            GetRequest(request, (string data) =>
-            {
-                var res = GetPacketBody<APIResponceGetCards>(data);
-                callback?.Invoke(res);
-            });
-        }
-
-        public void CreateUser(string name, APICallback<APIResponceUserCreate> callback)
+        public async UniTask<APIResponceUserCreate> CreateUser(string name)
         {
             string request = string.Format("{0}/user/create", GameSetting.GameAPIURI);
 
@@ -90,14 +63,12 @@ namespace Outgame
             user.session = _session;
             user.token = _token;
 
-            PostRequest(request, user, (string data) =>
-            {
-                var res = GetPacketBody<APIResponceUserCreate>(data);
-                callback?.Invoke(res);
-            });
+            string json = await PostRequest(request, user);
+            var res = GetPacketBody<APIResponceUserCreate>(json);
+            return res;
         }
 
-        public void Gacha(int gachaId, int drawCount, APICallback<APIResponceGachaDraw> callback)
+        public async UniTask<APIResponceGachaDraw> Gacha(int gachaId, int drawCount)
         {
             string request = string.Format("{0}/gacha/draw", GameSetting.GameAPIURI);
 
@@ -107,11 +78,9 @@ namespace Outgame
             user.session = _session;
             user.token = _token;
 
-            PostRequest(request, user, (string data) =>
-            {
-                var res = GetPacketBody<APIResponceGachaDraw>(data);
-                callback?.Invoke(res);
-            });
+            string json = await PostRequest(request, user);
+            var res = GetPacketBody<APIResponceGachaDraw>(json);
+            return res;
         }
     }
 }

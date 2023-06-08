@@ -16,10 +16,11 @@ public class GameSetting
     APIEnvironment _environment = APIEnvironment.Develop; //fix
 
     public static APIEnvironment Environment => _instance._environment;
+    public static string StatusCheckAPIURI => GetConfig().StatusCheckAPIURI;
     public static string LoginAPIURI => GetConfig().LoginAPIURI;
+    public static string GameAPIURI => GetConfig().GameAPIURI;
     public static string MasterDataAPIURI => GetConfig().MasterDataAPIURI;
     public static string UserDataAPIURI => GetConfig().UserDataAPIURI;
-    public static string GameAPIURI => GetConfig().GameAPIURI;
 
     static private GameSettingObject GetConfig()
     {

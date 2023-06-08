@@ -25,12 +25,8 @@ namespace Outgame
 
             _isCreate = true;
 
-            GameAPI.API.CreateUser(name, (data) =>
-            {
-                User.Create(data.udid);
-
-                //UnityEngine.SceneManagement.SceneManager.LoadScene((int)SCENEID.Field);
-            });
+            GameAPI.API.CreateUser(name);
+            //User.Create(data.udid);
         }
     }
 }

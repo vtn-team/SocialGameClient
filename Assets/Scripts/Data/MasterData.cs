@@ -76,21 +76,26 @@ namespace MD
         bool _isInit = false;
         bool _useCache = false;
         Action _onLoadCallback = null;
+        Dictionary<string, int> _versionInfos = new Dictionary<string, int>();
 
         string GetFileName(string sheetName)
         {
             return string.Format("{0}/{1}.json", DataPrefix, sheetName);
         }
 
-        public async void Setup(Action callback, bool useCache = false, bool forceReload = false)
+        public async UniTask<int> Setup(bool useCache = true, MasterVersion[] versionInfos= null, Action onLoadCallback = null)
         {
-            if (_isInit && !forceReload) return;
-
             URI = GameSetting.MasterDataAPIURI;
 
             _useCache = useCache;
-            _onLoadCallback = callback;
+            _onLoadCallback = onLoadCallback;
             _loadingCount = 0;
+
+            //Map
+            foreach (var v in versionInfos)
+            {
+                _versionInfos.Add(v.masterName, v.version);
+            }
 
             //マスタ読み込み
             Debug.Log("MasterData Load Start.");
@@ -106,6 +111,8 @@ namespace MD
             };
             await UniTask.WhenAll(masterDataDownloads.ToArray());
             await ConstructMasterData();
+
+            return 0;
         }
 
         /// <summary>
@@ -150,11 +157,17 @@ namespace MD
         /// </summary>
         /// <typeparam name="T">マスタの型</typeparam>
         /// <param name="sheetName">シート名</param>
-        private async UniTask LoadMasterData<T>(string sheetName)
+        private async UniTask LoadMasterData<T>(string sheetName) where T : MasterDataBase
         {
             var filename = GetFileName(sheetName);
             var data = await LocalData.LoadAsync<T>(filename);
-            if (data == null || !_useCache)
+            bool isUpdate = data == null || !_useCache;
+            if(!isUpdate && _versionInfos.ContainsKey(sheetName))
+            {
+                Debug.Log($"Server:{_versionInfos[sheetName]} > Local:{data.Version}");
+                isUpdate = _versionInfos[sheetName] > data.Version;
+            }
+            if (isUpdate)
             {
                 _loadingCount++;
                 string json = await GetRequest(string.Format("{0}?sheet={1}", URI, sheetName));

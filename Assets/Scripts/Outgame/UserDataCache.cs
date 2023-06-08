@@ -10,6 +10,8 @@ namespace Outgame
 {
     public class UserDataCache
     {
+
+
         static public void Save<T>(string key, T data)
         {
             LocalData.Save<T>(key, data, Application.dataPath, true);

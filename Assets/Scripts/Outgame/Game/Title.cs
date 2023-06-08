@@ -17,7 +17,7 @@ namespace Outgame
     {
         public void Start()
         {
-            MasterData.Instance.Setup(() => { }, true);
+            //MasterData.Instance.Setup(true);
         }
 
         public void Login()
@@ -54,7 +54,7 @@ namespace Outgame
                 return;
             }));
 
-            SceneManager.LoadScene("Field");
+            SceneManager.LoadScene("Home");
         }
 
         void NewUser()

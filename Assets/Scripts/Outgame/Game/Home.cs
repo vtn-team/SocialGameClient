@@ -27,18 +27,12 @@ namespace Outgame
 
         public void GachaDrawSingle(int gachaId)
         {
-            GameAPI.API.Gacha(gachaId, 1, (data) =>
-            {
-
-            });
+            GameAPI.API.Gacha(gachaId, 1);
         }
         public void GachaDrawMulti(int gachaId)
         {
             //TODO: ひけるだけ引くという処理は必要
-            GameAPI.API.Gacha(gachaId, 10, (data) =>
-            {
-
-            });
+            GameAPI.API.Gacha(gachaId, 10);
         }
     }
 }

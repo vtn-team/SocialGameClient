@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dbcd5dbed963f048bcfb6e10ddc322b, type: 3}
   m_Name: Develop
   m_EditorClassIdentifier: 
+  StatusCheckAPIURI: http://node.vtn-game.com/stat
   LoginAPIURI: http://node.vtn-game.com
+  GameAPIURI: http://node.vtn-game.com
+  SocialAPIURI: http://node.vtn-game.com
   MasterDataAPIURI: https://script.google.com/macros/s/AKfycbw8Qkx1_NhgIm3TkqLqS5HWyEcQ2F44UdYxxBRpxk4ZIebrXyng-Y9ZgzfJ0sz3HwTpUA/exec
   UserDataAPIURI: http://node.vtn-game.com
-  GameAPIURI: http://node.vtn-game.com

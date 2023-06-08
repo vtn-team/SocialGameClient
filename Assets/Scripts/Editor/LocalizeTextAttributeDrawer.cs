@@ -111,10 +111,10 @@ public class LocalizeTextAttributeDrawer : PropertyDrawer
             }) { text = "再読み込み" });
             
             //マスターデータ読み込み
-            MasterData.Instance.Setup(() =>
+            MasterData.Instance.Setup(true, null, () =>
             {
                 ContainerBuild(property);
-            },true);
+            });
 
             return _element;
         }

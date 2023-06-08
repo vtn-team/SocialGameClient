@@ -4,6 +4,20 @@ using System.Linq;
 
 namespace MD
 {
+    [Serializable]
+    public class MasterVersion
+    {
+        public string masterName;
+        public int version;
+    }
+
+    [Serializable]
+    public class MasterDataBase
+    {
+        public int Version;
+        //xxx[] Data;
+    }
+
     //スプレッドシートからダウンロードしてくるデータたち
     [Serializable]
     public class TextData
@@ -13,9 +27,8 @@ namespace MD
     }
 
     [Serializable]
-    public class TextMaster
+    public class TextMaster : MasterDataBase
     {
-        public int Version;
         public TextData[] Data;
     }
 
@@ -30,9 +43,8 @@ namespace MD
     }
 
     [Serializable]
-    public class CardMaster
+    public class CardMaster : MasterDataBase
     {
-        public int Version;
         public CardData[] Data;
     }
 
@@ -45,9 +57,8 @@ namespace MD
     }
 
     [Serializable]
-    public class EffectMaster
+    public class EffectMaster : MasterDataBase
     {
-        public int Version;
         public EffectData[] Data;
     }
     //

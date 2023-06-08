@@ -20,6 +20,7 @@ namespace Outgame
         [SerializeField, ReadOnly(true)] string _name;
         [SerializeField, ReadOnly(true)] int _userId;
 
+        /*
         private void Start()
         {
             if (!_isAutoLogin) return;
@@ -61,5 +62,6 @@ namespace Outgame
                     break;
             }
         }
+        */
     }
 }
