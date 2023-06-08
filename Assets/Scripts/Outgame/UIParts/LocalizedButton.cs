@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
 using MD;
+using Cysharp.Threading.Tasks;
 
 namespace Outgame
 {
@@ -25,17 +26,15 @@ namespace Outgame
 
         void Start()
         {
-            StartCoroutine("SetText");
-        }
+            UniTask.RunOnThreadPool(async () =>
+            {
+                await UniTask.WaitUntil(() => MasterData.Instance.IsSetupComplete) ;
+                
+                var text = MasterData.GetLocalizedText(_textKey);
+                if (text == null) return;
 
-        IEnumerator SetText()
-        {
-            if(!MasterData.Instance.IsSetupComplete) yield return null;
-            var text = MasterData.GetLocalizedText(_textKey);
-            if(text == null) yield return null;
-
-            _text.text = text;
-            yield break;
+                _text.text = text;
+            }).Forget();
         }
     }
 }
