@@ -17,8 +17,20 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6b2999f284cb1c840b31a3a918246924
   m_SerializeEntries:
-  - m_GUID: 83a40d1fcf6924344a013377bd8112b2
-    m_Address: Assets/Scenes/Data/Event01/Event.prefab
+  - m_GUID: aebbe02dbeb6e394ca7149ef97e1800e
+    m_Address: Assets/Scenes/Game/UI/NormalGacha.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a32c2d8e762980b419216fdcccee262a
+    m_Address: Assets/Scenes/Game/UI/NewUser.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 12a0e6a8bd726754ba0ff232d9bd9cf7
+    m_Address: Assets/Scenes/Game/UI/GachaEffect.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e3e114fa58c93b4387bbc87e3428321
+    m_Address: Assets/Scenes/Game/UI/Title.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
