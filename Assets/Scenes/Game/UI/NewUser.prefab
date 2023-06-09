@@ -122,8 +122,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Outgame.CreateUser, Assembly-CSharp
+      - m_Target: {fileID: 9076661474508518799}
+        m_TargetAssemblyTypeName: Outgame.UIUserCreateView, Assembly-CSharp
         m_MethodName: UserCreate
         m_Mode: 1
         m_Arguments:
@@ -1008,6 +1008,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6208799364618767486}
+  - component: {fileID: 5352407052801272269}
+  - component: {fileID: 9076661474508518799}
   m_Layer: 5
   m_Name: NewUser
   m_TagString: Untagged
@@ -1039,6 +1041,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &5352407052801272269
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208799364618767487}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &9076661474508518799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6208799364618767487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b846567ec1e4b64d9a5917b403996ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 1
+  _input: {fileID: 6208799364560000534}
 --- !u!1 &6208799365002765290
 GameObject:
   m_ObjectHideFlags: 0

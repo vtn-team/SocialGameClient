@@ -49,6 +49,8 @@ namespace Outgame
                     return;
                 }
 
+                UniTask.Post(GoHome);
+
                 //各種データ取得
                 var cards = await GameAPI.API.GetCards();
 
@@ -59,6 +61,11 @@ namespace Outgame
                 //ホームとかで消してもらうか、そのままにしておく
                 package.IsReady = true;
             })));
+        }
+
+        public void GoHome()
+        {
+            UIManager.NextView(ViewID.Home);
         }
     }
 }
