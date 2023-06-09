@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Cysharp.Threading.Tasks.Triggers;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 /// <summary>
@@ -73,6 +74,7 @@ public class SequenceBridge
             return false;
         }
 
+        _instance._sequenceDeck[key].Dispose();
         _instance._sequenceDeck.Remove(key);
         return true;
     }
@@ -83,17 +85,26 @@ public class SequenceBridge
 /// </summary>
 public class SequencePackage
 {
+    CancellationToken _token;
     UniTask _task;
 
     public bool IsReady { get; set; }
 
     protected virtual void Awake() { }
 
+    public void Dispose()
+    {
+        _token.ThrowIfCancellationRequested();
+    }
+
     static public SequencePackage Create<T>(UniTask task) where T : SequencePackage, new()
     {
         T package = new T();
+        package._token = new CancellationToken();
         package.Awake();
         package._task = task;
+        task.AttachExternalCancellation(package._token);
+        task.Forget();
         package.IsReady = false;
         return package;
     }
