@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Game/UI/Gacha.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a32c2d8e762980b419216fdcccee262a
+    m_Address: Assets/Scenes/Game/UI/NewUser.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e3e114fa58c93b4387bbc87e3428321
+    m_Address: Assets/Scenes/Game/UI/Title.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:
