@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4884067602225495716}
   - component: {fileID: 2268778434431114142}
   - component: {fileID: 5539567345316391360}
+  - component: {fileID: 1627110765884760776}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -135,6 +136,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1627110765884760776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580355744053351819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2382c1efeba54e42b41a744c05764d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 5539567345316391360}
+  _textKey: UIGachaResult
 --- !u!1 &2468560757362390621
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,9 +371,9 @@ GameObject:
   m_Component:
   - component: {fileID: 374198166401888389}
   - component: {fileID: 3580871540529791538}
-  - component: {fileID: 5200065113601285724}
+  - component: {fileID: 6039067254854290327}
   m_Layer: 5
-  m_Name: Gacha
+  m_Name: GachaResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +414,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5200065113601285724
+--- !u!114 &6039067254854290327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -408,10 +423,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4913753044336203899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 638db1c0b32a9f440a78309c2ccba393, type: 3}
+  m_Script: {fileID: 11500000, guid: b24b9be5d0da6274da2fad25a94e90c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isActive: 0
+  _isActive: 1
+  _card: {fileID: 2625422133001496020, guid: f4577d9543a58a54fb3ebb18e913c791, type: 3}
 --- !u!1 &6034517160391697935
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -658.9083, y: 262.59955}
+  m_AnchoredPosition: {x: 0.000030518, y: -439}
   m_SizeDelta: {x: 345.3776, y: 98.8717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1088345005883166454
@@ -535,9 +551,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5200065113601285724}
-        m_TargetAssemblyTypeName: Outgame.UIGachaView, Assembly-CSharp
-        m_MethodName: GoGacha
+      - m_Target: {fileID: 6039067254854290327}
+        m_TargetAssemblyTypeName: Outgame.UIGachaResultView, Assembly-CSharp
+        m_MethodName: GoHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -560,4 +576,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 8770347195204703818}
-  _textKey: UIGachaNormal
+  _textKey: UIGoHome

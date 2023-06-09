@@ -1,12 +1,7 @@
 ﻿using Outgame;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
-using UnityEditor.Build.Content;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -35,19 +30,26 @@ public class UIManager
         _instance.LoadScene(entry);
     }
 
-    public static void Back()
+    public static bool Back()
     {
-        if (!_instance._current) return;
+        if (!_instance._current) return false;
 
         _instance._current.Exit();
         if (_instance._uiStack.Count > 0)
         {
             _instance._current = _instance._uiStack.Pop();
-            _instance._current.Enter();
+            //_instance._current.Enter();
+            return true;
         }
+        return false;
     }
 
-    void LoadScene(ViewID next)
+    void LoadSceneStack(ViewID next)
+    {
+        LoadScene(next, true);
+    }
+
+    void LoadScene(ViewID next, bool isStack = false)
     {
         GameObject sceneOrigin = null;
         if (_sceneCache.ContainsKey(next))
@@ -58,6 +60,7 @@ public class UIManager
         {
             sceneOrigin = Addressables.LoadAssetAsync<GameObject>(string.Format("Assets/Scenes/Game/UI/{0}.prefab", next.ToString())).WaitForCompletion();
         }
+
         if (sceneOrigin == default)
         {
             Debug.LogError($"{next.ToString()}: シーンの読み込みに失敗");
@@ -73,10 +76,38 @@ public class UIManager
         }
 
         view.Enter();
+
+        if (!isStack)
+        {
+            //todo: スタックしないケースの場合でも、スタックして後で壊すほうがいい
+            GameObject.Destroy(_current);
+        }
+
         _current = view;
+
         //todo:
 
         Addressables.Release(sceneOrigin);
+    }
+
+    public static void NextView(GameObject origin)
+    {
+        var scene = GameObject.Instantiate(origin, _instance._root);
+        var view = scene.GetComponent<UIStackableView>();
+        if (view == default)
+        {
+            Debug.LogError($"シーン管理スクリプトの読み込みに失敗");
+            return;
+        }
+
+        _instance._current?.Exit();
+        GameObject.Destroy(_instance._current);
+
+        //ビューを直接指定する場合はヒストリには書き込まない
+        //_instance._uiSceneHistory.Add(next);
+
+        _instance._current = view;
+        _instance._current?.Enter();
     }
 
     public static void NextView(ViewID next)
@@ -87,16 +118,9 @@ public class UIManager
         _instance.LoadScene(next);
     }
 
-    public static void StackModalView(ViewID next)
+    public static void StackView(ViewID next)
     {
-        _instance._current?.Exit();
-
         _instance._uiStack.Push(_instance._current);
-        if (_instance._uiStack.Count > 0)
-        {
-            _instance._current = _instance._uiStack.Pop();
-            _instance._current.Enter();
-        }
+        _instance.LoadSceneStack(next);
     }
-
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,17 @@ namespace Outgame
     public class CardImage : UIView
     {
         [SerializeField] UnityEngine.UI.RawImage _image;
-        [SerializeField] string _debugStr = "ampere";
+        [SerializeField] int debugCardId = -1;
 
         private void Start()
         {
-            Addressables.LoadAssetAsync<Texture>(string.Format("Assets/DataAsset/Card/{0}.png", _debugStr))
+            if (debugCardId != -1) LoadTexture(debugCardId);
+        }
+
+        public void LoadTexture(int cardId)
+        {
+            var data = MasterData.GetCard(cardId);
+            Addressables.LoadAssetAsync<Texture>(string.Format("Assets/DataAsset/Card/{0}.png", data.Resource))
             .Completed += t =>
             {
                 _image.texture = t.Result;

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6234278708388462897}
+  - component: {fileID: 4031807802120555484}
+  - component: {fileID: 5374111005199522437}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -39,6 +41,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &4031807802120555484
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590893252736736659}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5374111005199522437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590893252736736659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8872f0396a6e0524086d4a43d0315e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isActive: 1
 --- !u!1 &2702447535103527814
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,9 +189,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Outgame.Title, Assembly-CSharp
-        m_MethodName: Login
+      - m_Target: {fileID: 5374111005199522437}
+        m_TargetAssemblyTypeName: Outgame.UIHomeView, Assembly-CSharp
+        m_MethodName: GoGacha
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -187,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 2702447536785047973}
-  _textKey: UITitle
+  _textKey: UIGacha
 --- !u!1 &2702447536785047975
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,9 +608,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Outgame.Title, Assembly-CSharp
-        m_MethodName: Login
+      - m_Target: {fileID: 5374111005199522437}
+        m_TargetAssemblyTypeName: Outgame.UIHomeView, Assembly-CSharp
+        m_MethodName: GoCardList
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -606,7 +633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1122020975130662961}
-  _textKey: UITitle
+  _textKey: UICardList
 --- !u!1 &7814803881294652311
 GameObject:
   m_ObjectHideFlags: 0

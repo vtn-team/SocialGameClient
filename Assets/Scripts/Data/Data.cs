@@ -77,6 +77,7 @@ namespace MD
         public int Id;
         public string Name;
         public int Rare;
+        public string Resource;
         public CardEffect Effect;
     }
 }

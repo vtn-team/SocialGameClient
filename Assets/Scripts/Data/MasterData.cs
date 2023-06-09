@@ -92,9 +92,12 @@ namespace MD
             _loadingCount = 0;
 
             //Map
-            foreach (var v in versionInfos)
+            if (versionInfos != null)
             {
-                _versionInfos.Add(v.masterName, v.version);
+                foreach (var v in versionInfos)
+                {
+                    _versionInfos.Add(v.masterName, v.version);
+                }
             }
 
             //マスタ読み込み
@@ -141,6 +144,7 @@ namespace MD
                 d.Id = c.Id;
                 d.Name = c.Name;
                 d.Rare = c.Rare;
+                d.Resource = c.Resource;
                 d.Effect = new CardEffect();
                 d.Effect.Text = efectList.GetData(c.EffectId)?.Text;
                 cards.Add(d);

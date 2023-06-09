@@ -27,7 +27,10 @@ namespace Outgame
                 return null;
             }
 
-            _token = res.token;
+            if (res.token != null && res.token != "")
+            {
+                _token = res.token;
+            }
             return res;
         }
 

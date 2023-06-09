@@ -13,8 +13,8 @@ namespace Outgame
 
         Home = 100,
         Gacha = 200,
-        NormalGacha,
-        NormalGachaEffect,
+        GachaEffect,
+        GachaResult,
 
         Event = 10000,
     }
