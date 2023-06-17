@@ -29,12 +29,13 @@ namespace Outgame
 
                 //ガチャ
                 var gacha = await GameAPI.API.Gacha(_gachaId, dnum);
-                if (gacha.cardIds == null)
+                if (gacha.cards == null)
                 {
                     return;
                 }
 
                 //ローカルのカードリストに追加
+                //CardListModel.AppendCard(new CardData())
 
                 //
                 package.Gacha = gacha;

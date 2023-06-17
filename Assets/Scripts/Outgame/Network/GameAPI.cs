@@ -8,7 +8,7 @@ namespace Outgame
     public class GameAPI
     {
         //TODO: データから参照する形式だとプログラムの修正が少なくて済む
-        IGameAPIImplement _inplements = new NodeJSImplement();
+        IGameAPIImplement _inplements = new LocalImplement();//new NodeJSImplement();
 
         static GameAPI _instance = new GameAPI();
 

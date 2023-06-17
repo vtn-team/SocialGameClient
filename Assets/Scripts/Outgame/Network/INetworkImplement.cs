@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using Network;
 using Outgame;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,6 @@ public interface IGameAPIImplement
     UniTask<APIResponceGetCards> GetCards();
     UniTask<APIResponceUserCreate> CreateUser(string name);
     UniTask<APIResponceGachaDraw> Gacha(int gachaId, int drawCount);
+    UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials msterials);
     //
 }

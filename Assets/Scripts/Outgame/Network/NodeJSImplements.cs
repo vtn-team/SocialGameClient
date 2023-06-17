@@ -75,14 +75,29 @@ namespace Outgame
         {
             string request = string.Format("{0}/gacha/draw", GameSetting.GameAPIURI);
 
-            APIRequestGachaDraw user = new APIRequestGachaDraw();
-            user.gachaId = gachaId;
-            user.drawCount = drawCount;
-            user.session = _session;
-            user.token = _token;
+            APIRequestGachaDraw gacha = new APIRequestGachaDraw();
+            gacha.gachaId = gachaId;
+            gacha.drawCount = drawCount;
+            gacha.session = _session;
+            gacha.token = _token;
 
-            string json = await PostRequest(request, user);
+            string json = await PostRequest(request, gacha);
             var res = GetPacketBody<APIResponceGachaDraw>(json);
+            return res;
+        }
+
+        public async UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials materials)
+        {
+            string request = string.Format("{0}/enhance", GameSetting.GameAPIURI);
+
+            APIRequestEnhance enhance = new APIRequestEnhance();
+            enhance.baseId = baseId;
+            enhance.materials = materials;
+            enhance.session = _session;
+            enhance.token = _token;
+
+            string json = await PostRequest(request, enhance);
+            var res = GetPacketBody<APIResponceEnhance>(json);
             return res;
         }
     }

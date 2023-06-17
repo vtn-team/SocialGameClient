@@ -28,19 +28,22 @@ namespace Outgame
             //一応データ待ち
             UniTask.RunOnThreadPool(async () => {
                 var gacha = await SequenceBridge.GetSequencePackageWaitForReady<GachaDrawPackage>("GachaDraw");
-                UniTask.Post(() => CreateView(gacha));
+                CreateView(gacha);
+                await UniTask.WaitUntil(() => _cardImages.All(img => img.IsReady));
+                //ここでフェード開ける
                 SequenceBridge.DeleteSequence("GachaDraw");
             }).Forget();
         }
 
         void CreateView(GachaDrawPackage gacha)
         {
-            foreach (var card in gacha.Gacha.cardIds)
+            foreach (var card in gacha.Gacha.cards)
             {
                 Debug.Log(card);
                 var cardObj = GameObject.Instantiate(_card, this.RectTransform);
                 var image = cardObj.GetComponent<CardImage>();
-                image.LoadTexture(card);
+                image.Setup(card.cardId);
+                image.Load();
                 _cardImages.Add(image);
             }
 

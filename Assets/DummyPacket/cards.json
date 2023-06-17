@@ -1,0 +1,2880 @@
+{
+  "status": 200,
+  "version": 2,
+  "cards": [
+    {
+      "id": 31,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 32,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 33,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 34,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 35,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 36,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 37,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 38,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 39,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 40,
+      "cardId": 20,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 41,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 42,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 43,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 44,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 45,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 46,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 47,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 48,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 49,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 50,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 51,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 52,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 53,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 54,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 55,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 56,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 57,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 58,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 59,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 60,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 61,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 62,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 63,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 64,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 65,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 66,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 67,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 68,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 69,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 70,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 71,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 72,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 73,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 74,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 75,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 76,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 77,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 78,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 79,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 80,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 81,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 82,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 83,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 84,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 85,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 86,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 87,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 88,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 89,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 90,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 91,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 92,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 93,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 94,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 95,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 96,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 97,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 98,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 99,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 100,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 101,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 102,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 103,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 104,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 105,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 106,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 107,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 108,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 109,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 110,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 111,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 112,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 113,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 114,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 115,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 116,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 117,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 118,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 119,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 120,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 121,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 122,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 123,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 124,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 125,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 126,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 127,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 128,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 129,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 130,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 131,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 132,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 133,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 134,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 135,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 136,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 137,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 138,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 139,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 140,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 141,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 142,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 143,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 144,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 145,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 146,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 147,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 148,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 149,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 150,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 151,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 152,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 153,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 154,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 155,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 156,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 157,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 158,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 159,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 160,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 161,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 162,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 163,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 164,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 165,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 166,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 167,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 168,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 169,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 170,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 171,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 172,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 173,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 174,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 175,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 176,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 177,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 178,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 179,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 180,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 181,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 182,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 183,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 184,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 185,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 186,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 187,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 188,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 189,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 190,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 191,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 192,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 193,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 194,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 195,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 196,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 197,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 198,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 199,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 200,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 201,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 202,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 203,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 204,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 205,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 206,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 207,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 208,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 209,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 210,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 211,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 212,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 213,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 214,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 215,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 216,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 217,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 218,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 219,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 220,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 221,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 222,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 223,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 224,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 225,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 226,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 227,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 228,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 229,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 230,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 231,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 232,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 233,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 234,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 235,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 236,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 237,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 238,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 239,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 240,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 241,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 242,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 243,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 244,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 245,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 246,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 247,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 248,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 249,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 250,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 251,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 252,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 253,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 254,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 255,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 256,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 257,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 258,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 259,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 260,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 261,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 262,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 263,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 264,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 265,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 266,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 267,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 268,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 269,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 270,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 271,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 272,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 273,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 274,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 275,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 276,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 277,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 278,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 279,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 280,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 281,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 282,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 283,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 284,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 285,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 286,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 287,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 288,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 289,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 290,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 291,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 292,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 293,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 294,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 295,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 296,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 297,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 298,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 299,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 300,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 301,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 302,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 303,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 304,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 305,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 306,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 307,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 308,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 309,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 310,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 311,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 312,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 313,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 314,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 315,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 316,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 317,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 318,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 319,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 320,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 321,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 322,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 323,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 324,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 325,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 326,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 327,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 328,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 329,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 330,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 331,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 332,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 333,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 334,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 335,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 336,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 337,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 338,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 339,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 340,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 341,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 342,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 343,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 344,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 345,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 346,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 347,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 348,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 349,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 350,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 351,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 352,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 353,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 354,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 355,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 356,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 357,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 358,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 359,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 360,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 361,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 362,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 363,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 364,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 365,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 366,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 367,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 368,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 369,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 370,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 371,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 372,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 373,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 374,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 375,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 376,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 377,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 378,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 379,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 380,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 381,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 382,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 383,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 384,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 385,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 386,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 387,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 388,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 389,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 390,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 391,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 392,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 393,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 394,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 395,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 396,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 397,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 398,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 399,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 400,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 401,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 402,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 403,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 404,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 405,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 406,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 407,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 408,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 409,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 410,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 411,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 412,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 413,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 414,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 415,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 416,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 417,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 418,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 419,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 420,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 421,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 422,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 423,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 424,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 425,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 426,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 427,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 428,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 429,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 430,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 431,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 432,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 433,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 434,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 435,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 436,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 437,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 438,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 439,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 440,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 441,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 442,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 443,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 444,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 445,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 446,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 447,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 448,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 449,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 450,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 451,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 452,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 453,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 454,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 455,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 456,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 457,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 458,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 459,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 460,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 461,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 462,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 463,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 464,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 465,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 466,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 467,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 468,
+      "cardId": 2,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 469,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 470,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 471,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 472,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 473,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 474,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 475,
+      "cardId": 11,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 476,
+      "cardId": 13,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 477,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 478,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 479,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 480,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 481,
+      "cardId": 3,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 482,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 483,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 484,
+      "cardId": 7,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 485,
+      "cardId": 10,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 486,
+      "cardId": 6,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 487,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 488,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 489,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 490,
+      "cardId": 1,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 491,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 492,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 493,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 494,
+      "cardId": 8,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 495,
+      "cardId": 12,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 496,
+      "cardId": 18,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 497,
+      "cardId": 14,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 498,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 499,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 500,
+      "cardId": 15,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 501,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 502,
+      "cardId": 16,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 503,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 504,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 505,
+      "cardId": 4,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 506,
+      "cardId": 5,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 507,
+      "cardId": 17,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 508,
+      "cardId": 9,
+      "level": 1,
+      "luck": 1
+    },
+    {
+      "id": 509,
+      "cardId": 19,
+      "level": 1,
+      "luck": 1
+    }
+  ]
+}

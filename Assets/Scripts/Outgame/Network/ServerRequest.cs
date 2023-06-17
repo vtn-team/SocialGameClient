@@ -7,6 +7,20 @@ using System.Threading.Tasks;
 namespace Network
 {
     [Serializable]
+    public class APIRequestEnhanceItem
+    {
+        public int itemId;
+        public int itemCount;
+    }
+
+    [Serializable]
+    public class APIRequestEnhanceMaterials
+    {
+        public int[] cardIds;
+        public APIRequestEnhanceItem[] items;
+    }
+
+    [Serializable]
     public class APIRequestBase
     {
         public string session;
@@ -31,5 +45,12 @@ namespace Network
     {
         public int gachaId;
         public int drawCount;
+    }
+
+    [Serializable]
+    public class APIRequestEnhance : APIRequestBase
+    {
+        public int baseId;
+        public APIRequestEnhanceMaterials materials;
     }
 }

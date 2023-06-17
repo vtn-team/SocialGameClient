@@ -19,6 +19,7 @@ namespace Outgame
         public int id;
         public int cardId;
         public int level;
+        public int luck;
     }
 
     [Serializable]
@@ -48,6 +49,15 @@ namespace Outgame
     [Serializable]
     public class APIResponceGachaDraw : APIResponceBase
     {
-        public int[] cardIds;
+        public APIResponceCard[] cards;
     }
+
+    [Serializable]
+    public class APIResponceEnhance : APIResponceBase
+    {
+        public int _success;
+        public int _level;
+        public int _luck;
+    }
+    
 }
