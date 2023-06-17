@@ -16,7 +16,7 @@ public class UIView : MonoBehaviour
     public RectTransform RectTransform { get; protected set; }
     protected CanvasGroup _canvasGroup = null;
 
-    private void Awake()
+    void Awake()
     {
         RectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();

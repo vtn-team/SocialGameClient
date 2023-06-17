@@ -39,7 +39,7 @@ namespace Outgame
         /// <summary>
         /// 書き換え可能/不能に対応したアクセサを用意する
         /// </summary>
-        public CardList CardList => _data;
+        static public CardList CardList => _instance._data;
 
         protected override void Setup()
         {

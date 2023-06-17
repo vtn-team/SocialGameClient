@@ -23,7 +23,7 @@ namespace Outgame
 
         public void GoCardList()
         {
-            Debug.Log("今度やりまーす");
+            UIManager.NextView(ViewID.CardList);
         }
     }
 }
