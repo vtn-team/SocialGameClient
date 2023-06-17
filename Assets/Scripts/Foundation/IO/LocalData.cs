@@ -31,7 +31,7 @@ class LocalData
             //ファイルがなかったらnullで返す
             if (!File.Exists(path + "/" + file))
             {
-                return default;
+                return default(T);
             }
 
             var arr = File.ReadAllBytes(path + "/" + file);
@@ -63,6 +63,12 @@ class LocalData
                 path = Application.dataPath; //Application.persistentDataPath; //デバッグしやすくした、製品ではpersistentDataPathを使う事。
             }
 
+            //ファイルがなかったらnullで返す
+            if (!File.Exists(path + "/" + file))
+            {
+                return default(T);
+            }
+
             string json = "";
 
             using (FileStream fs = new FileStream(path + "/" + file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
@@ -84,7 +90,7 @@ class LocalData
         }
         catch (Exception ex)
         {
-            Debug.LogError($"LoadAsync{file}");
+            Debug.LogError($"LoadAsync{file}"); 
             Debug.LogError(ex.Message);
         }
         return default(T);

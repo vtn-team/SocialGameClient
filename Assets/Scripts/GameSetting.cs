@@ -14,6 +14,8 @@ public class GameSetting
         Release = 99
     };
     APIEnvironment _environment = APIEnvironment.Develop; //fix
+    string _dataPath = "";
+    string _savePath = "";
 
     public static APIEnvironment Environment => _instance._environment;
     public static string StatusCheckAPIURI => GetConfig().StatusCheckAPIURI;
@@ -22,10 +24,16 @@ public class GameSetting
     public static string MasterDataAPIURI => GetConfig().MasterDataAPIURI;
     public static string UserDataAPIURI => GetConfig().UserDataAPIURI;
 
+    public static string SavePath => _instance._savePath;
+    public static string DataPath => _instance._dataPath;
+
+
     static private GameSettingObject GetConfig()
     {
         if (_instance._setting != null) return _instance._setting;
         _instance._setting = Resources.Load<GameSettingObject>(string.Format("{0}", _instance._environment.ToString()));
+        _instance._dataPath = Application.dataPath;
+        _instance._savePath = Application.persistentDataPath;
         return _instance._setting;
     }
 }
