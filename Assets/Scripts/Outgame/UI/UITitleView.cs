@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine.SceneManagement;
 
 namespace Outgame
@@ -20,37 +21,30 @@ namespace Outgame
 
         public void Login()
         {
-            //同期的にやる。Taskでやるとデッドロックする。
-            //ユーザ情報があったら拾う
-            var user = User.Load();
-            string guid = "";
-            if (user != null)
-            {
-                guid = user.GUID;
-            }
-
             //遷移しながらログインシーケンスを進める
             SequenceBridge.RegisterSequence("Login", SequencePackage.Create<LoginPackage>(UniTask.RunOnThreadPool(async () =>
             {
                 //UniTask.Post(SequenceBridge.GetSequencePackage<LoginPackage>("Login"));
                 var package = SequenceBridge.GetSequencePackage<LoginPackage>("Login");
 
+                //ユーザ情報拾う
+                UserModel.Load();
+
                 //ログインAPI
-                var login = await GameAPI.API.Login(guid);
-                if (login.udid == null)
+                //NOTE: sessionとtokenを受け取るためにユーザがいなくてもloginを通す
+                var login = await GameAPI.API.Login(UserModel.GUID);
+                if (string.IsNullOrEmpty(login.udid))
                 {
                     UniTask.Post(NewUser);
                     return;
                 }
 
+                package.Login = login;
+
                 UniTask.Post(GoHome);
 
                 //各種データ取得
-                var cards = await GameAPI.API.GetCards();
-
-                //データ格納
-                package.Login = login;
-                package.Cards = cards;
+                await CardListModel.LoadAsync();
 
                 //ホームとかで消してもらうか、そのままにしておく
                 package.IsReady = true;

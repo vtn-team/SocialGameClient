@@ -41,6 +41,9 @@ namespace Outgame
                 //ユーザの作成
                 var usercreate = await GameAPI.API.CreateUser(name);
 
+                //保存
+                UserModel.Create(usercreate.udid);
+
                 //ログインAPI通す
                 var login = await GameAPI.API.Login(usercreate.udid);
                 if (login.udid == null)
@@ -52,11 +55,10 @@ namespace Outgame
                 UniTask.Post(GoHome);
 
                 //各種データ取得
-                var cards = await GameAPI.API.GetCards();
+                await CardListModel.LoadAsync();
 
                 //データ格納
                 package.Login = login;
-                package.Cards = cards;
 
                 //ホームとかで消してもらうか、そのままにしておく
                 package.IsReady = true;
