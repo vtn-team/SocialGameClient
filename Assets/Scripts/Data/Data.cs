@@ -43,9 +43,25 @@ namespace MD
     }
 
     [Serializable]
+    public class ItemData
+    {
+        public int Id;
+        public int Type;
+        public string Name;
+        public string Resource;
+        public int EffectId;
+    }
+
+    [Serializable]
     public class CardMaster : MasterDataBase
     {
         public CardData[] Data;
+    }
+
+    [Serializable]
+    public class ItemMaster : MasterDataBase
+    {
+        public ItemData[] Data;
     }
 
 
@@ -67,17 +83,30 @@ namespace MD
     /// <summary>
     /// マージ後のデータ
     /// </summary>
-    public class CardEffect
-    {
-        public string Text;
-    }
-
     public class Card
     {
         public int Id;
         public string Name;
         public int Rare;
         public string Resource;
-        public CardEffect Effect;
+        public EffectData Effect;
+    }
+
+    public enum ItemType
+    {
+        Invalid,
+        QuestPoint,
+        EnhanceItem,
+        EvolutionItem,
+        StoryItem
+    }
+
+    public class Item
+    {
+        public int Id;
+        public ItemType Type;
+        public string Name;
+        public string Resource;
+        public EffectData Effect;
     }
 }

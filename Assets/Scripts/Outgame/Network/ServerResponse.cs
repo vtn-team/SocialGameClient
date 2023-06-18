@@ -23,6 +23,13 @@ namespace Outgame
     }
 
     [Serializable]
+    public class APIResponceItem
+    {
+        public int itemId;
+        public int count;
+    }
+
+    [Serializable]
     public class APIResponceLogin : APIResponceBase
     {
         public string session;
@@ -38,6 +45,12 @@ namespace Outgame
     public class APIResponceGetCards : APIResponceBase
     {
         public APIResponceCard[] cards;
+    }
+
+    [Serializable]
+    public class APIResponceGetItems : APIResponceBase
+    {
+        public APIResponceItem[] items;
     }
 
     [Serializable]

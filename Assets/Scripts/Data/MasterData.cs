@@ -67,6 +67,7 @@ namespace MD
         //マスターデータたち
         //NOTE: そもそもコードで参照するのであればべた書きもあり
         PrettyData<int, Card> _cardMaster = new PrettyData<int, Card>();
+        PrettyData<int, Item> _itemMaster = new PrettyData<int, Item>();
         PrettyData<string, TextData> _textMaster = new PrettyData<string, TextData>();
 
         //読み込み管理
@@ -103,13 +104,13 @@ namespace MD
             //マスタ読み込み
             Debug.Log("MasterData Load Start.");
 
-            List<string> masterDataList = new List<string>() { "JP_Text", "EN_Text", "Card", "Effect" };
             //NOTE: そもそもコードで参照するのであればべた書きもあり
             List<UniTask> masterDataDownloads = new List<UniTask>()
             {
                 LoadMasterData<TextMaster>("JP_Text"),
                 LoadMasterData<TextMaster>("EN_Text"),
                 LoadMasterData<CardMaster>("Card"),
+                LoadMasterData<ItemMaster>("Item"),
                 LoadMasterData<EffectMaster>("Effect"),
             };
             await UniTask.WhenAll(masterDataDownloads.ToArray());
@@ -133,6 +134,7 @@ namespace MD
 
             //カードマスタをマージする
             var card = await LocalData.LoadAsync<CardMaster>(GetFileName("Card"));
+            var item = await LocalData.LoadAsync<ItemMaster>(GetFileName("Item"));
             var effect = await LocalData.LoadAsync<EffectMaster>(GetFileName("Effect"));
             var efectList = PrettyData<int, EffectData>.Create(effect.Data, (EffectData line) => { return line.Id; });
 
@@ -145,11 +147,25 @@ namespace MD
                 d.Name = c.Name;
                 d.Rare = c.Rare;
                 d.Resource = c.Resource;
-                d.Effect = new CardEffect();
-                d.Effect.Text = efectList.GetData(c.EffectId)?.Text;
+                d.Effect = efectList.GetData(c.EffectId);
                 cards.Add(d);
             }
             _cardMaster = PrettyData<int, Card>.Create(cards.ToArray(), (Card line) => { return line.Id; });
+
+            //アイテムマスタをマージする
+            List<Item> items = new List<Item>();
+            foreach (var i in item.Data)
+            {
+                //カードデータを組み合わせていく
+                Item d = new Item();
+                d.Id = i.Id;
+                d.Name = i.Name;
+                d.Type = (ItemType)i.Type;
+                d.Resource = i.Resource;
+                d.Effect = efectList.GetData(i.EffectId);
+                items.Add(d);
+            }
+            _itemMaster = PrettyData<int, Item>.Create(items.ToArray(), (Item line) => { return line.Id; });
 
             Debug.Log("MasterData Load Done.");
             _isInit = true;
@@ -210,6 +226,16 @@ namespace MD
         static public Card GetCard(int Id)
         {
             return _instance._cardMaster.GetData(Id);
+        }
+
+        /// <summary>
+        /// カード取得
+        /// </summary>
+        /// <param name="Id">カードのId</param>
+        /// <returns>カード情報</returns>
+        static public Item GetItem(int Id)
+        {
+            return _instance._itemMaster.GetData(Id);
         }
 
 #if UNITY_EDITOR
