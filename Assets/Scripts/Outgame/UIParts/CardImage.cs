@@ -17,7 +17,9 @@ namespace Outgame
         [SerializeField] bool _isLazyLoad = false;
 
         public bool IsReady { get; set; }
+        public CardData Info => _cardInfo;
         int _cardId;
+        int _index;
         Card _cardData;
         CardData _cardInfo;
         Texture _tex;
@@ -53,6 +55,7 @@ namespace Outgame
         {
             if (_cardData == null) return;
 
+            Active();
             _canvasGroup.alpha = 0;
             _load.text = "L";
             Addressables.LoadAssetAsync<Texture>(string.Format("Assets/DataAsset/Card/{0}.png", _cardData.Resource))
@@ -68,23 +71,18 @@ namespace Outgame
                 }
                 else
                 {
-                    ReleaseTexture();
+                    Release();
                 }
             };
         }
 
-        public void ReleaseTexture()
+        public void Release()
         {
             if (!_tex) return;
             _image.texture = null;
             Addressables.Release(_tex);
             _load.text = "F";
             Disactive();
-        }
-
-        public void Detail()
-        {
-
         }
     }
 }

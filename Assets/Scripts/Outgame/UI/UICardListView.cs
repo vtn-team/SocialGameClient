@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Outgame
 {
@@ -13,12 +14,23 @@ namespace Outgame
     /// </summary>
     public class UICardListView : UIStackableView
     {
+        [SerializeField] ListView _listView;
+
         protected override void AwakeCall()
         {
-            ViewId = ViewID.GachaEffect;
+            ViewId = ViewID.CardList;
             _hasPopUI = true;
+        }
+
+        private void Start()
+        {
+            _listView.Setup();
             Active();
         }
 
+        public void Back()
+        {
+            UIManager.Back();
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace Outgame
         CardList,
         Enhance,
         GachaResult,
+        CardInfo,
 
         Gacha = 200,
         GachaEffect = 300,

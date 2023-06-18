@@ -45,6 +45,7 @@ namespace Outgame
 
                 //各種データ取得
                 await CardListModel.LoadAsync();
+                await ItemListModel.LoadAsync();
 
                 //ホームとかで消してもらうか、そのままにしておく
                 package.IsReady = true;

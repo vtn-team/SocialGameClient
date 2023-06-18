@@ -25,5 +25,10 @@ namespace Outgame
         {
             UIManager.NextView(ViewID.CardList);
         }
+
+        public void GoEnhance()
+        {
+            UIManager.NextView(ViewID.Enhance);
+        }
     }
 }
