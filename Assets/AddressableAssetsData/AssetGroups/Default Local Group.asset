@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Game/UI/GachaResult.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 8ddc64f9772891f4fa144ff7584bae40
+    m_Address: Assets/Scenes/Game/UI/CardList.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 711a15d16dd68de4c96901e34a107085
+    m_Address: Assets/Scenes/Game/UI/Enhance.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:
