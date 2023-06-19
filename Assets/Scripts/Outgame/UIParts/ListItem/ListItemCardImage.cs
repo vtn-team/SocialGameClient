@@ -14,6 +14,7 @@ namespace Outgame
     public class ListItemCardImage : ListItemBase
     {
         CardImage _target;
+        bool _isActiveSelect = false;
 
         public override void Bind(GameObject target)
         {

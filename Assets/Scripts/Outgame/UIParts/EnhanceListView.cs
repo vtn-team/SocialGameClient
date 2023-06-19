@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Outgame
 {
@@ -17,6 +18,9 @@ namespace Outgame
         [SerializeField] TMPro.TextMeshProUGUI _level;
         [SerializeField] TMPro.TextMeshProUGUI _luck;
 
+        [SerializeField] GameObject _listBadge;
+        [SerializeField] GameObject _listBadgeItem;
+
         [SerializeField] GameObject _baseDecideButton;
         [SerializeField] GameObject _enhanceButton;
 
@@ -27,6 +31,7 @@ namespace Outgame
         }
 
         State _viewState = State.BaseSelect;
+        int _itemListCount = 0;
         int _baseId = -1;
         List<ListItemBase> _selectedItems = new List<ListItemBase>();
 
@@ -44,6 +49,18 @@ namespace Outgame
             _viewState = State.MaterialSelect;
             _baseDecideButton.SetActive(false);
             Setup();
+        }
+
+        void AddBudge(GameObject badgeOrigin, GameObject item)
+        {
+            //バッジ付ける
+            var badge = GameObject.Instantiate(badgeOrigin, item.transform);
+            var script = badge.GetComponent<ListBadge>();
+            if (script)
+            {
+                script.RectTransform.localPosition = new Vector3(-60, 60, 0); //ザル
+                script.Disactive();
+            }
         }
 
         /// <summary>
@@ -77,16 +94,19 @@ namespace Outgame
                         _currentLine = line;
                     }
 
-                    var it = GameObject.Instantiate(_item, _currentLine.transform);
-                    var script = it.GetComponent<ItemImage>();
-                    if (script)
+                    var item = GameObject.Instantiate(_item, _currentLine.transform);
                     {
-                        script.Setup(itemList[i]);
+                        var script = item.GetComponent<ItemImage>();
+                        script?.Setup(itemList[i]);
                     }
 
-                    var item = ListItemBase.ListItemSetup<ListItemEnhanceItem>(totalCount, it, (int evtId, int index) => OnCardClick(evtId, index));
-                    _itemList.Add(item);
+                    //ほんとうはListItemSetupでやりたいが
+                    AddBudge(_listBadgeItem, item);
+
+                    var listItem = ListItemBase.ListItemSetup<ListItemEnhanceItem>(totalCount, item, (int evtId, int index) => OnCardClick(evtId, index));
+                    _itemList.Add(listItem);
                 }
+                _itemListCount = totalCount;
             }
 
             //カード
@@ -104,15 +124,18 @@ namespace Outgame
                     _currentLine = line;
                 }
 
-                var card = GameObject.Instantiate(_card, _currentLine.transform);
-                var script = card.GetComponent<CardImage>();
+                var item = GameObject.Instantiate(_card, _currentLine.transform);
+                var script = item.GetComponent<CardImage>();
                 if (script)
                 {
                     script.Setup(cardList[i]);
                 }
 
-                var item = ListItemBase.ListItemSetup<ListItemCardImage>(totalCount, card, (int evtId, int index) => OnCardClick(evtId, index));
-                _itemList.Add(item);
+                //ほんとうはListItemSetupでやりたいが
+                AddBudge(_listBadge, item);
+
+                var listItem = ListItemBase.ListItemSetup<ListItemCardImage>(totalCount, item, (int evtId, int index) => OnCardClick(evtId, index));
+                _itemList.Add(listItem);
 
                 ++totalCount;
             }
@@ -139,8 +162,14 @@ namespace Outgame
             switch(_viewState)
             {
                 case State.BaseSelect:
+                    if(_baseId != -1)
+                    {
+                        _itemList[_baseId].SetBudge(-1);
+                    }
+
                     _baseId = index;
                     _baseDecideButton.SetActive(true);
+
                     {
                         var cardInfo = _itemList[_baseId].GetComponent<CardImage>().Info;
                         var cardData = MasterData.GetCard(cardInfo.CardId);
@@ -150,16 +179,21 @@ namespace Outgame
                         _name.text = MasterData.GetLocalizedText(cardData.Name);
                         _level.text = cardInfo.Level.ToString();
                         _luck.text = cardInfo.Luck.ToString();
+
+                        _itemList[_baseId].SetBudge(0);
                     }
                     break;
 
                 case State.MaterialSelect:
-                    if (_selectedItems.Any(i => i == _itemList[index]))
+                    //アイテムは重複許可
+                    if (index >= _itemListCount && _selectedItems.Any(i => i == _itemList[index]))
                     {
+                        _itemList[index].SetBudge(-1);
                         _selectedItems.Remove(_itemList[index]);
                     }
                     else
                     {
+                        _itemList[index].SetBudge(_selectedItems.Count);
                         _selectedItems.Add(_itemList[index]);
                     }
 

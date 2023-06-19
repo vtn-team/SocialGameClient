@@ -18,6 +18,7 @@ namespace Outgame
         [SerializeField] TMPro.TextMeshProUGUI _count;
 
         public bool IsReady { get; set; }
+        public ItemData Info => _itemInfo;
 
         int _itemId;
         int _index;
@@ -56,6 +57,11 @@ namespace Outgame
             _itemData = MasterData.GetItem(_itemId);
 
             SetItemData();
+        }
+
+        public void SetCount(int count)
+        {
+            _count.text = count.ToString();
         }
 
         public void Load()

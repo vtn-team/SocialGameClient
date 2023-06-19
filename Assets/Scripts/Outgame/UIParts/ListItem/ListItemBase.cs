@@ -23,6 +23,7 @@ namespace Outgame
 
         protected int _index = -1;
         protected int _budgeIndex = -1;
+        protected ListBadge _badge;
         protected ListSelectEvent _evt = null;
 
         public int Index => _index;
@@ -42,6 +43,10 @@ namespace Outgame
             {
                 button.onClick.AddListener(script.OnClick);
             }
+
+            //バッジはビューによってあったりなかったりするのでnullを許容する
+            script._badge = target.GetComponentInChildren<ListBadge>();
+
             return script;
         }
 
@@ -50,9 +55,17 @@ namespace Outgame
             _evt?.Invoke(0, _index);
         }
 
-        public void SetBudge(int bindex)
+        public virtual void SetBudge(int bindex)
         {
             _budgeIndex = bindex;
+            if (bindex != -1)
+            {
+                _badge?.Active();
+            }
+            else
+            {
+                _badge?.Disactive();
+            }
         }
 
         public abstract void Bind(GameObject target);

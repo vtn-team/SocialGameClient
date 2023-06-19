@@ -14,10 +14,16 @@ namespace Outgame
     public class ListItemEnhanceItem : ListItemBase
     {
         ItemImage _target;
+        ItemData _itemInfo;
+        ListBadgeCount _listBadgeCount;
+        int _useCount = 0;
 
         public override void Bind(GameObject target)
         {
             _target = target.GetComponent<ItemImage>();
+            _itemInfo = _target.Info;
+
+            _listBadgeCount = target.GetComponentInChildren<ListBadgeCount>();
         }
 
         public override void Load()
@@ -33,6 +39,23 @@ namespace Outgame
         protected override void OnClick()
         {
             _evt?.Invoke(0, _index);
+        }
+
+        public override void SetBudge(int bindex)
+        {
+            if (bindex != -1)
+            {
+                _useCount++;
+                if (_useCount > _itemInfo?.Count) _useCount = _itemInfo.Count;
+                _listBadgeCount?.SetCount(_useCount);
+                _target.SetCount(_itemInfo.Count - _useCount);
+
+                _badge?.Active();
+            }
+            else
+            {
+                _badge?.Disactive();
+            }
         }
     }
 }

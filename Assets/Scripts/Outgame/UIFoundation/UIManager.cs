@@ -27,7 +27,7 @@ public class UIManager
         //スタックビューはHomeからはいる
         var rootCanvas = GameObject.FindObjectOfType<Canvas>();
         _instance._root = rootCanvas.GetComponent<RectTransform>();
-        _instance.LoadScene(entry);
+        _instance.LoadScene(entry, null);
     }
 
     public static bool Back()
@@ -44,12 +44,12 @@ public class UIManager
         return false;
     }
 
-    void LoadSceneStack(ViewID next)
+    void LoadSceneStack(ViewID next, UIInformationBase info)
     {
-        LoadScene(next, true);
+        LoadScene(next, info, true);
     }
 
-    void LoadScene(ViewID next, bool isStack = false)
+    void LoadScene(ViewID next, UIInformationBase info, bool isStack = false)
     {
         GameObject sceneOrigin = null;
         if (_sceneCache.ContainsKey(next))
@@ -84,13 +84,14 @@ public class UIManager
         }
 
         _current = view;
+        _current.SetInformation(info);
 
         //todo:
 
         Addressables.Release(sceneOrigin);
     }
 
-    public static void NextView(GameObject origin)
+    public static void NextView(GameObject origin, UIInformationBase info = null)
     {
         var scene = GameObject.Instantiate(origin, _instance._root);
         var view = scene.GetComponent<UIStackableView>();
@@ -110,17 +111,17 @@ public class UIManager
         _instance._current?.Enter();
     }
 
-    public static void NextView(ViewID next)
+    public static void NextView(ViewID next, UIInformationBase info = null)
     {
         _instance._current?.Exit();
 
         _instance._uiSceneHistory.Add(next);
-        _instance.LoadScene(next);
+        _instance.LoadScene(next, info);
     }
 
-    public static void StackView(ViewID next)
+    public static void StackView(ViewID next, UIInformationBase info = null)
     {
         _instance._uiStack.Push(_instance._current);
-        _instance.LoadSceneStack(next);
+        _instance.LoadSceneStack(next, info);
     }
 }

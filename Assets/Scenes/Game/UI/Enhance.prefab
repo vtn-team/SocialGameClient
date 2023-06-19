@@ -666,7 +666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000026806705}
+  m_AnchoredPosition: {x: 0, y: 0.00004748758}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7994953722986837612
@@ -990,9 +990,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Outgame.UIGachaResultView, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 6395137314273727467}
+        m_TargetAssemblyTypeName: Outgame.UIEnhanceView, Assembly-CSharp
+        m_MethodName: Back
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2216,6 +2216,8 @@ MonoBehaviour:
   _name: {fileID: 4101540066549361559}
   _level: {fileID: 861782379301491332}
   _luck: {fileID: 4046777527810076480}
+  _listBadge: {fileID: 125845174740155762, guid: 7d2f9580e66007247bab3d162d96b0b3, type: 3}
+  _listBadgeItem: {fileID: 125845174740155762, guid: d774cc02bbd31e64e888663ec60b9291, type: 3}
   _baseDecideButton: {fileID: 1029032044266849428}
   _enhanceButton: {fileID: 1740164736817567719}
 --- !u!1 &6963843487388476769

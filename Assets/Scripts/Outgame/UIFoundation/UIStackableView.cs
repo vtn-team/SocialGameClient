@@ -10,9 +10,15 @@ namespace Outgame
     {
         public ViewID ViewId { get; protected set; }
 
+        protected UIInformationBase _info = null;
+
         protected bool _hasPopUI = false;
         public bool HasPopUI => _hasPopUI;
 
+        public void SetInformation(UIInformationBase info)
+        {
+            _info = info;
+        }
 
         public virtual void Enter()
         {
