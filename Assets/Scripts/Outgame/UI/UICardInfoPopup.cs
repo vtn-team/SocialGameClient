@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Outgame
 {
-    public class UIInformationBase
+    public class UICardInfo : UIInformationBase
     {
-        public ViewID ViewID;
 
-        public T Information<T>() where T : UIInformationBase => this as T;
+    }
+
+    public class UICardInfoPopup : UIStackableView
+    {
     }
 }

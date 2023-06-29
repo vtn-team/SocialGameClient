@@ -20,6 +20,9 @@ namespace Outgame
         Gacha = 200,
         GachaEffect = 300,
 
+        CommonDialog = 500,
+        CardInfo,
+
         Event = 10000,
     }
 }

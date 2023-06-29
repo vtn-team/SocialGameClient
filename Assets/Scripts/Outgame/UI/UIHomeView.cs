@@ -30,5 +30,16 @@ namespace Outgame
         {
             UIManager.NextView(ViewID.Enhance);
         }
+
+
+        public void DialogTest()
+        {
+            UICommonDialog.OpenOKDialog("テスト", "テストダイアログですよ", Test);
+        }
+
+        void Test(int type)
+        {
+            Debug.Log("here");
+        }
     }
 }

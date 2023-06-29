@@ -18,6 +18,11 @@ namespace Outgame
         public void SetInformation(UIInformationBase info)
         {
             _info = info;
+            SetupFromInfo();
+        }
+
+        public virtual void SetupFromInfo()
+        {
         }
 
         public virtual void Enter()

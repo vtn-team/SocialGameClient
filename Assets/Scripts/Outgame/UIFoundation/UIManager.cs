@@ -15,7 +15,7 @@ public class UIManager
 
     RectTransform _root;
     UIStackableView _current = null;
-    List<ViewID> _uiSceneHistory = new List<ViewID>();
+    List<UIInformationBase> _uiSceneHistory = new List<UIInformationBase>();
     Stack<UIStackableView> _uiStack = new Stack<UIStackableView>();
 
     Dictionary<ViewID, GameObject> _sceneCache = new Dictionary<ViewID, GameObject>(); 
@@ -35,12 +35,28 @@ public class UIManager
         if (!_instance._current) return false;
 
         _instance._current.Exit();
+
         if (_instance._uiStack.Count > 0)
         {
+            GameObject.Destroy(_instance._current.gameObject);
+
             _instance._current = _instance._uiStack.Pop();
             //_instance._current.Enter();
             return true;
         }
+        else
+        {
+            if (_instance._uiSceneHistory.Count >= 2)
+            {
+                var info = _instance._uiSceneHistory[_instance._uiSceneHistory.Count - 2];
+                _instance.LoadScene(info.ViewID, info);
+            }
+            else
+            {
+                Setup(ViewID.Home);
+            }
+        }
+
         return false;
     }
 
@@ -77,10 +93,10 @@ public class UIManager
 
         view.Enter();
 
-        if (!isStack)
+        if (!isStack && _current)
         {
             //todo: スタックしないケースの場合でも、スタックして後で壊すほうがいい
-            GameObject.Destroy(_current);
+            GameObject.Destroy(_current.gameObject);
         }
 
         _current = view;
@@ -102,7 +118,7 @@ public class UIManager
         }
 
         _instance._current?.Exit();
-        GameObject.Destroy(_instance._current);
+        GameObject.Destroy(_instance._current.gameObject);
 
         //ビューを直接指定する場合はヒストリには書き込まない
         //_instance._uiSceneHistory.Add(next);
@@ -115,7 +131,15 @@ public class UIManager
     {
         _instance._current?.Exit();
 
-        _instance._uiSceneHistory.Add(next);
+        if (info != null)
+        {
+            info.ViewID = next;
+            _instance._uiSceneHistory.Add(info);
+        }
+        else
+        {
+            _instance._uiSceneHistory.Add(new UIInformationBase() { ViewID = next});
+        }
         _instance.LoadScene(next, info);
     }
 
