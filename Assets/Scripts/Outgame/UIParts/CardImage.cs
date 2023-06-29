@@ -14,7 +14,7 @@ namespace Outgame
         [SerializeField] UnityEngine.UI.RawImage _image;
         [SerializeField] TMPro.TextMeshProUGUI _id;
         [SerializeField] TMPro.TextMeshProUGUI _load;
-        [SerializeField] bool _isLazyLoad = false;
+        //[SerializeField] bool _isLazyLoad = false;
 
         public bool IsReady { get; set; }
         public CardData Info => _cardInfo;

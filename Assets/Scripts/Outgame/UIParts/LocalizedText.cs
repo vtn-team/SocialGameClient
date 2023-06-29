@@ -14,7 +14,7 @@ namespace Outgame
     /// <summary>
     /// 
     /// </summary>
-    public class LocalizedButton : MonoBehaviour
+    public class LocalizedText : MonoBehaviour
     {
         [SerializeField] TMPro.TextMeshProUGUI _text;
         [SerializeField, LocalizeText] string _textKey;
@@ -36,5 +36,32 @@ namespace Outgame
                 _text.text = text;
             }).Forget();
         }
+
+        public void SetString(string key)
+        {
+            _textKey = key;
+
+            var text = MasterData.GetLocalizedText(_textKey);
+            if (text == null) return;
+
+            _text.text = text;
+        }
+
+#if UNITY_EDITOR
+        void OnEnable()
+        {
+            var text = MasterData.GetLocalizedText(_textKey);
+            if (text == null) return;
+
+            _text.text = text;
+        }
+        void OnDisable()
+        {
+            var text = MasterData.GetLocalizedText(_textKey);
+            if (text == null) return;
+
+            _text.text = text;
+        }
+#endif
     }
 }

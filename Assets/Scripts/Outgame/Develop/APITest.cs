@@ -15,7 +15,7 @@ namespace Outgame
     /// </summary>
     public class APITest : MonoBehaviour
     {
-        [SerializeField] bool _isAutoLogin = true;
+        //[SerializeField] bool _isAutoLogin = true;
         [SerializeField, ReadOnly(true)] string _guid;
         [SerializeField, ReadOnly(true)] string _name;
         [SerializeField, ReadOnly(true)] int _userId;

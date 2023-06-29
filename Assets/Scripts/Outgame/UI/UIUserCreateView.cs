@@ -16,6 +16,7 @@ namespace Outgame
         [SerializeField] TMP_InputField _input;
 
         bool _isCreate = false;
+        
         private void Start()
         {
             _input.Select();
@@ -26,7 +27,7 @@ namespace Outgame
         {
             string name = _input.text;
             if (name == "") return;
-            //if (_isCreate) return;
+            if (_isCreate) return;
 
             _isCreate = true;
 

@@ -64,7 +64,7 @@ namespace Outgame
         /// NOTE: モデルデータに通信させる仕様はよくある
         /// </summary>
         static public async UniTask<ItemList> LoadAsync() => await _instance.loadAsync();
-        protected async UniTask<ItemList> loadAsync()
+        protected override async UniTask<ItemList> loadAsync()
         {
             if (HasData) return _data;
 
