@@ -30,6 +30,15 @@ namespace Outgame
     }
 
     [Serializable]
+    public class APIResponceQuest
+    {
+        public int questId;
+        public int score;
+        public int clearFlag;
+    }
+    
+
+    [Serializable]
     public class APIResponceLogin : APIResponceBase
     {
         public string session;
@@ -51,6 +60,12 @@ namespace Outgame
     public class APIResponceGetItems : APIResponceBase
     {
         public APIResponceItem[] items;
+    }
+
+    [Serializable]
+    public class APIResponceGetQuests : APIResponceBase
+    {
+        public APIResponceQuest[] quests;
     }
 
     [Serializable]

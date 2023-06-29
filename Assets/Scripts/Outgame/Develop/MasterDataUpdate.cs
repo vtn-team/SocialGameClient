@@ -1,4 +1,5 @@
-﻿using MD;
+﻿using Cysharp.Threading.Tasks;
+using MD;
 using Outgame;
 using System;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Outgame
     {
         public void MasterUpdate()
         {
-            MasterData.Instance.Setup(false);
+            MasterData.Instance.Setup(false).Forget();
         }
     }
 }

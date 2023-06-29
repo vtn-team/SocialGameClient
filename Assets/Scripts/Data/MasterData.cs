@@ -64,9 +64,18 @@ namespace MD
 #endif
         }
 
+        //公開マスターデータ
+        static public List<Chapter> Chapters => _instance._chapters;
+        static public List<Quest> Quests => _instance._quests;
+
         //マスターデータたち
+        List<Chapter> _chapters = new List<Chapter>();
+        List<Quest> _quests = new List<Quest>();
+
         //NOTE: そもそもコードで参照するのであればべた書きもあり
         PrettyData<int, Card> _cardMaster = new PrettyData<int, Card>();
+        PrettyData<int, Chapter> _chapterMaster = new PrettyData<int, Chapter>();
+        PrettyData<int, Quest> _questMaster = new PrettyData<int, Quest>();
         PrettyData<int, Item> _itemMaster = new PrettyData<int, Item>();
         PrettyData<string, TextData> _textMaster = new PrettyData<string, TextData>();
 
@@ -110,6 +119,8 @@ namespace MD
                 LoadMasterData<TextMaster>("JP_Text"),
                 LoadMasterData<TextMaster>("EN_Text"),
                 LoadMasterData<CardMaster>("Card"),
+                LoadMasterData<ChapterMaster>("Chapter"),
+                LoadMasterData<QuestMaster>("Quest"),
                 LoadMasterData<ItemMaster>("Item"),
                 LoadMasterData<EffectMaster>("Effect"),
             };
@@ -135,6 +146,8 @@ namespace MD
             //カードマスタをマージする
             var card = await LocalData.LoadAsync<CardMaster>(GetFileName("Card"));
             var item = await LocalData.LoadAsync<ItemMaster>(GetFileName("Item"));
+            var chapter = await LocalData.LoadAsync<ChapterMaster>(GetFileName("Chapter"));
+            var quest = await LocalData.LoadAsync<QuestMaster>(GetFileName("Quest"));
             var effect = await LocalData.LoadAsync<EffectMaster>(GetFileName("Effect"));
             var efectList = PrettyData<int, EffectData>.Create(effect.Data, (EffectData line) => { return line.Id; });
 
@@ -166,6 +179,34 @@ namespace MD
                 items.Add(d);
             }
             _itemMaster = PrettyData<int, Item>.Create(items.ToArray(), (Item line) => { return line.Id; });
+
+            //クエストマスタをマージしていく
+            _quests.Clear();
+            foreach (var q in quest.Data)
+            {
+                Quest d = new Quest();
+                d.Id = q.Id;
+                d.Name = q.Name;
+                d.Resource = q.Resource;
+                d.ChapterId = q.ChapterId;
+                d.MovePoint = q.MovePoint;
+                _quests.Add(d);
+            }
+            Debug.Log(_quests.Count());
+            _chapters.Clear();
+            foreach (var c in chapter.Data)
+            {
+                Chapter d = new Chapter();
+                d.Id = c.Id;
+                d.Name = c.Name;
+                d.Resource = c.Resource;
+                d.QuestType = c.QuestType;
+                d.Condition = c.Condition;
+                d.QuestList = _quests.Where(q => q.ChapterId == c.Id).ToList();
+                _chapters.Add(d);
+            }
+            _questMaster = PrettyData<int, Quest>.Create(_quests.ToArray(), (Quest line) => { return line.Id; });
+            _chapterMaster = PrettyData<int, Chapter>.Create(_chapters.ToArray(), (Chapter line) => { return line.Id; });
 
             Debug.Log("MasterData Load Done.");
             _isInit = true;
@@ -229,13 +270,33 @@ namespace MD
         }
 
         /// <summary>
-        /// カード取得
+        /// アイテム取得
         /// </summary>
-        /// <param name="Id">カードのId</param>
-        /// <returns>カード情報</returns>
+        /// <param name="Id">アイテムのId</param>
+        /// <returns>アイテム情報</returns>
         static public Item GetItem(int Id)
         {
             return _instance._itemMaster.GetData(Id);
+        }
+
+        /// <summary>
+        /// チャプターデータ取得
+        /// </summary>
+        /// <param name="Id">チャプターId</param>
+        /// <returns>チャプター情報</returns>
+        static public Chapter GetChapter(int Id)
+        {
+            return _instance._chapterMaster.GetData(Id);
+        }
+
+        /// <summary>
+        /// クエストデータ取得
+        /// </summary>
+        /// <param name="Id">クエストId</param>
+        /// <returns>クエスト情報</returns>
+        static public Quest GetQuest(int Id)
+        {
+            return _instance._questMaster.GetData(Id);
         }
 
 #if UNITY_EDITOR

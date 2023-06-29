@@ -58,7 +58,7 @@ namespace Outgame
                 {
                     script.Setup(cardList[i]);
                 }
-                var item = ListItemBase.ListItemSetup<ListItemCardImage>(i,card,(int evtId, int index) => OnCardClick(evtId, index));
+                var item = ListItemBase.ListItemSetup<ListItemCardImage>(i,card,(int evtId, int index) => OnItemClick(evtId, index));
                 _itemList.Add(item);
             }
 
@@ -79,7 +79,7 @@ namespace Outgame
             }
         }
 
-        protected virtual void OnCardClick(int evtId, int index)
+        protected virtual void OnItemClick(int evtId, int index)
         {
             UIManager.StackView(ViewID.CardInfo);
         }

@@ -33,6 +33,11 @@ namespace Outgame
             return await LocalData.LoadAsync<APIResponceGetItems>("DummyPacket/items.json", GameSetting.DataPath, false);
         }
 
+        public async UniTask<APIResponceGetQuests> GetQuests()
+        {
+            return await LocalData.LoadAsync<APIResponceGetQuests>("DummyPacket/quests.json", GameSetting.DataPath, false);
+        }
+
         public async UniTask<APIResponceUserCreate> CreateUser(string name)
         {
             //ローカルテストを想定しないパケット

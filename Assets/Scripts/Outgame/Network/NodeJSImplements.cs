@@ -66,6 +66,15 @@ namespace Outgame
             return res;
         }
 
+        public async UniTask<APIResponceGetQuests> GetQuests()
+        {
+            string request = string.Format("{0}/ud/quests?session={1}", GameSetting.GameAPIURI, _session);
+
+            string json = await GetRequest(request);
+            var res = GetPacketBody<APIResponceGetQuests>(json);
+            return res;
+        }
+
         public async UniTask<APIResponceUserCreate> CreateUser(string name)
         {
             string request = string.Format("{0}/user/create", GameSetting.GameAPIURI);

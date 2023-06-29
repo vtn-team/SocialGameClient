@@ -33,7 +33,11 @@ namespace Outgame
         {
             if (target == null) { Debug.LogError("Prefabアイテムが存在しない"); return null; }
 
-            var script = target.AddComponent<T>();
+            var script = target.GetComponent<T>();
+            if (script == null)
+            {
+                script = target.AddComponent<T>();
+            }
             script._index = index;
             script._evt = evt;
             script.Bind(target);

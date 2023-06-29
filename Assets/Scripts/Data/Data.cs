@@ -53,6 +53,28 @@ namespace MD
     }
 
     [Serializable]
+    public class ChapterData
+    {
+        public int Id;
+        public string Name;
+        public string Resource;
+        public int QuestType;
+        public int Condition;
+    }
+
+    [Serializable]
+    public class QuestData
+    {
+        public int Id;
+        public string Name;
+        public string Resource;
+        public int ChapterId;
+        public int MovePoint;
+        public int EnemyGroupId;  //クライアントでは使わない
+        public int RewardGroupId; //クライアントでは使わない
+    }
+
+    [Serializable]
     public class CardMaster : MasterDataBase
     {
         public CardData[] Data;
@@ -62,6 +84,18 @@ namespace MD
     public class ItemMaster : MasterDataBase
     {
         public ItemData[] Data;
+    }
+    
+    [Serializable]
+    public class ChapterMaster : MasterDataBase
+    {
+        public ChapterData[] Data;
+    }
+
+    [Serializable]
+    public class QuestMaster : MasterDataBase
+    {
+        public QuestData[] Data;
     }
 
 
@@ -108,5 +142,24 @@ namespace MD
         public string Name;
         public string Resource;
         public EffectData Effect;
+    }
+
+    public class Chapter
+    {
+        public int Id;
+        public string Name;
+        public string Resource;
+        public int QuestType;
+        public int Condition;
+        public List<Quest> QuestList;
+    }
+
+    public class Quest
+    {
+        public int Id;
+        public int ChapterId;
+        public string Name;
+        public string Resource;
+        public int MovePoint;
     }
 }

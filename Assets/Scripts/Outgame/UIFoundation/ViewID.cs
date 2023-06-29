@@ -12,10 +12,10 @@ namespace Outgame
         NewUser,
 
         Home = 100,
+        Quest,
         CardList,
         Enhance,
         GachaResult,
-        CardInfo,
 
         Gacha = 200,
         GachaEffect = 300,

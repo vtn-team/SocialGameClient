@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static Outgame.UICommonDialogInfo;
 
 namespace Outgame
@@ -22,6 +23,9 @@ namespace Outgame
         public string MainText;
         public DialogType Type;
         public PushCallback Callback;
+
+        public string OKText = null;
+        public string NGText = null;
     }
 
     public class UICommonDialog : UIStackableView
@@ -31,6 +35,9 @@ namespace Outgame
         [SerializeField] UIView _okButton1;
         [SerializeField] UIView _okButton2;
         [SerializeField] UIView _ngButton;
+        [SerializeField] LocalizedText _okText1;
+        [SerializeField] LocalizedText _okText2;
+        [SerializeField] LocalizedText _ngText;
 
         UICommonDialogInfo _dialogInfo;
 
@@ -51,12 +58,27 @@ namespace Outgame
                     _okButton1.Active();
                     _okButton2.Disactive();
                     _ngButton.Disactive();
+
+                    if (_dialogInfo.OKText!= null)
+                    {
+                        _okText1.SetString(_dialogInfo.OKText);
+                    }
                     break;
 
                 case DialogType.YesNo:
                     _okButton1.Disactive();
                     _okButton2.Active();
                     _ngButton.Active();
+
+                    if (_dialogInfo.OKText != null)
+                    {
+                        _okText2.SetString(_dialogInfo.OKText);
+                    }
+
+                    if (_dialogInfo.NGText != null)
+                    {
+                        _ngText.SetString(_dialogInfo.NGText);
+                    }
                     break;
             }
         }
@@ -67,24 +89,29 @@ namespace Outgame
             UIManager.Back();
         }
 
-        static public void OpenOKDialog(string title, string mainText, PushCallback callback)
+        static public void OpenOKDialog(string title, string mainText, PushCallback callback, string okKey = null)
         {
             UIManager.StackView(ViewID.CommonDialog, new UICommonDialogInfo()
             {
                 Title = title,
                 MainText = mainText,
                 Type = DialogType.OKOnly,
-                Callback = callback
+                Callback = callback,
+
+                OKText = okKey
             });
         }
-        static public void OpenYesNoDialog(string title, string mainText, PushCallback callback)
+        static public void OpenYesNoDialog(string title, string mainText, PushCallback callback, string okKey = null, string ngKey = null)
         {
             UIManager.StackView(ViewID.CommonDialog, new UICommonDialogInfo()
             {
                 Title = title,
                 MainText = mainText,
                 Type = DialogType.YesNo,
-                Callback = callback
+                Callback = callback,
+
+                OKText = okKey,
+                NGText = ngKey
             });
         }
     }

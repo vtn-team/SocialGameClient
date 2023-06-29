@@ -1009,6 +1009,9 @@ MonoBehaviour:
   _okButton1: {fileID: 1254712075197178488}
   _okButton2: {fileID: 5512047804441874939}
   _ngButton: {fileID: 6725371080944148769}
+  _okText1: {fileID: 6553926756924499898}
+  _okText2: {fileID: 8789405402196632825}
+  _ngText: {fileID: 85232230101213726}
 --- !u!1 &5242888979508632846
 GameObject:
   m_ObjectHideFlags: 0

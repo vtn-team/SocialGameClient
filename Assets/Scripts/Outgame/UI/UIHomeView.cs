@@ -31,6 +31,12 @@ namespace Outgame
             UIManager.NextView(ViewID.Enhance);
         }
 
+        public void GoQuest()
+        {
+            UIManager.NextView(ViewID.Quest);
+        }
+
+
 
         public void DialogTest()
         {

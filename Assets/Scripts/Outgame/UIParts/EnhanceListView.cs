@@ -103,7 +103,7 @@ namespace Outgame
                     //ほんとうはListItemSetupでやりたいが
                     AddBudge(_listBadgeItem, item);
 
-                    var listItem = ListItemBase.ListItemSetup<ListItemEnhanceItem>(totalCount, item, (int evtId, int index) => OnCardClick(evtId, index));
+                    var listItem = ListItemBase.ListItemSetup<ListItemEnhanceItem>(totalCount, item, (int evtId, int index) => OnItemClick(evtId, index));
                     _itemList.Add(listItem);
                 }
                 _itemListCount = totalCount;
@@ -134,7 +134,7 @@ namespace Outgame
                 //ほんとうはListItemSetupでやりたいが
                 AddBudge(_listBadge, item);
 
-                var listItem = ListItemBase.ListItemSetup<ListItemCardImage>(totalCount, item, (int evtId, int index) => OnCardClick(evtId, index));
+                var listItem = ListItemBase.ListItemSetup<ListItemCardImage>(totalCount, item, (int evtId, int index) => OnItemClick(evtId, index));
                 _itemList.Add(listItem);
 
                 ++totalCount;
@@ -157,7 +157,7 @@ namespace Outgame
             }
         }
 
-        protected override void OnCardClick(int evtId, int index)
+        protected override void OnItemClick(int evtId, int index)
         {
             switch(_viewState)
             {
