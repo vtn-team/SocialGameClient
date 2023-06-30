@@ -16,6 +16,13 @@ namespace Outgame
             _hasPopUI = true;
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+
+            UIStatusBar.Show();
+        }
+
         public void GoGacha()
         {
             UIManager.NextView(ViewID.Gacha);
