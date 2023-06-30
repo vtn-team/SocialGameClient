@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,10 @@ namespace Outgame
 
         void Ready(int questId)
         {
-            Debug.Log("here");
+            SequenceBridge.RegisterSequence("QuestStart", SequencePackage.Create<QuestStartPackage>(UniTask.RunOnThreadPool(async () =>
+            {
+                var result = await GameAPI.API.QuestStart(questId);
+            })));
         }
 
         public void Back()

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -15,16 +16,16 @@ public class UIManager
 
     RectTransform _root;
     UIStackableView _current = null;
-    List<UIInformationBase> _uiSceneHistory = new List<UIInformationBase>();
+    Stack<UIInformationBase> _uiSceneHistory = new Stack<UIInformationBase>();
     Stack<UIStackableView> _uiStack = new Stack<UIStackableView>();
 
     Dictionary<ViewID, GameObject> _sceneCache = new Dictionary<ViewID, GameObject>(); 
+
 
     public static void Setup(ViewID entry)
     {
         _instance._uiStack.Clear();
 
-        //スタックビューはHomeからはいる
         var rootCanvas = GameObject.FindObjectOfType<Canvas>();
         _instance._root = rootCanvas.GetComponent<RectTransform>();
         _instance.LoadScene(entry, null);
@@ -48,12 +49,16 @@ public class UIManager
         {
             if (_instance._uiSceneHistory.Count >= 2)
             {
-                var info = _instance._uiSceneHistory[_instance._uiSceneHistory.Count - 2];
-                _instance.LoadScene(info.ViewID, info);
+                //今いたページのページ履歴を消す
+                _instance._uiSceneHistory.Pop();
+
+                //その前のページに戻る 
+                var info = _instance._uiSceneHistory.Pop();
+                NextView(info.ViewID, info);
             }
             else
             {
-                Setup(ViewID.Home);
+                NextView(ViewID.Home);
             }
         }
 
@@ -90,6 +95,8 @@ public class UIManager
             Debug.LogError($"{next.ToString()}: シーン管理スクリプトの読み込みに失敗");
             return;
         }
+        
+        CreateUIParts(next);
 
         view.Enter();
 
@@ -134,11 +141,11 @@ public class UIManager
         if (info != null)
         {
             info.ViewID = next;
-            _instance._uiSceneHistory.Add(info);
+            _instance._uiSceneHistory.Push(info);
         }
         else
         {
-            _instance._uiSceneHistory.Add(new UIInformationBase() { ViewID = next});
+            _instance._uiSceneHistory.Push(new UIInformationBase() { ViewID = next});
         }
         _instance.LoadScene(next, info);
     }
@@ -147,5 +154,20 @@ public class UIManager
     {
         _instance._uiStack.Push(_instance._current);
         _instance.LoadSceneStack(next, info);
+    }
+
+    void CreateUIParts(ViewID next)
+    {
+        switch(next)
+        {
+            case ViewID.Home:
+                if(UIStatusBar.IsNull)
+                {
+                    var stOrigin = Addressables.LoadAssetAsync<GameObject>("Assets/Scenes/Game/UI/Status.prefab").WaitForCompletion();
+                    GameObject.Instantiate(stOrigin, _root);
+                    Addressables.Release(stOrigin);
+                }
+                break;
+        }
     }
 }
