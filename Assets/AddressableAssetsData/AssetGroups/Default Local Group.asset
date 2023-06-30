@@ -29,6 +29,18 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Game/UI/Enhance.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4decfdb1c84eee240bb580f57e1bb729
+    m_Address: Assets/Scenes/Game/UI/Status.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03722858902396e48ae602251d0994b2
+    m_Address: Assets/Scenes/Game/UI/CommonDialog.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4aee53d1cc01187479c531d633b8a929
+    m_Address: Assets/Scenes/Game/UI/Quest.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:
