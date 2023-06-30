@@ -11,9 +11,10 @@ public class GameSetting
     public enum APIEnvironment
     {
         Develop = 1,
+        Local = 2,
         Release = 99
     };
-    APIEnvironment _environment = APIEnvironment.Develop; //fix
+    APIEnvironment _environment = APIEnvironment.Local; //fix
     string _dataPath = "";
     string _savePath = "";
 
