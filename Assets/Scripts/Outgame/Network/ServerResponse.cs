@@ -13,6 +13,7 @@ namespace Outgame
         public string token;
     }
 
+
     [Serializable]
     public class APIResponceCard
     {
@@ -36,19 +37,7 @@ namespace Outgame
         public int score;
         public int clearFlag;
     }
-    
 
-    [Serializable]
-    public class APIResponceLogin : APIResponceBase
-    {
-        public string session;
-
-        public int id;
-        public string udid;
-        public string name;
-
-        public string game_state;
-    }
 
     [Serializable]
     public class APIResponceGetCards : APIResponceBase
@@ -67,25 +56,4 @@ namespace Outgame
     {
         public APIResponceQuest[] quests;
     }
-
-    [Serializable]
-    public class APIResponceUserCreate : APIResponceBase
-    {
-        public string udid;
-    }
-
-    [Serializable]
-    public class APIResponceGachaDraw : APIResponceBase
-    {
-        public APIResponceCard[] cards;
-    }
-
-    [Serializable]
-    public class APIResponceEnhance : APIResponceBase
-    {
-        public int _success;
-        public int _level;
-        public int _luck;
-    }
-    
 }

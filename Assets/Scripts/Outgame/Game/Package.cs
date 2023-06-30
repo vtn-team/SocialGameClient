@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Scripts.Outgame.Game
+namespace Outgame
 {
     public class LoginPackage : SequencePackage
     {
@@ -19,5 +19,10 @@ namespace Assets.Scripts.Outgame.Game
     {
         public APIResponceGachaDraw Gacha { get; set; }
     }
-    
+
+    public class QuestStartPackage : SequencePackage
+    {
+        public APIResponceQuestStart Gacha { get; set; }
+    }
+
 }

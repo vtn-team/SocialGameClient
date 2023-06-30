@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using Assets.Scripts.Outgame.Game;
 using Unity.VisualScripting;
 
 namespace Outgame

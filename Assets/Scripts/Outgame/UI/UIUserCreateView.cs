@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Outgame.Game;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Outgame;
 using System;
 using System.Collections.Generic;
@@ -40,7 +39,7 @@ namespace Outgame
                 var package = SequenceBridge.GetSequencePackage<LoginPackage>("Login");
 
                 //ユーザの作成
-                var usercreate = await GameAPI.API.CreateUser(name);
+                var usercreate = await GameAPI.API.UserCreate(name);
 
                 //保存
                 UserModel.Create(usercreate.udid);

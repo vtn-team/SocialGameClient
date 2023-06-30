@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Outgame.Game;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using Outgame;
 using System;
 using System.Collections.Generic;

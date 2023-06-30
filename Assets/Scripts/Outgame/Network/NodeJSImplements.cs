@@ -1,17 +1,19 @@
 ﻿using Cysharp.Threading.Tasks;
 using Network;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using static IGameAPIImplement;
 using static Network.WebRequest;
 
 namespace Outgame
 {
-    public class NodeJSImplement : IGameAPIImplement
+    public partial class NodeJSImplement : IGameAPIImplement
     {
         private string _token = "";
         private string _session = "";
@@ -34,18 +36,12 @@ namespace Outgame
             return res;
         }
 
-        public async UniTask<APIResponceLogin> Login(string uuid)
+        T CreateRequest<T>() where T : APIRequestBase, new()
         {
-            string request = string.Format("{0}/login", GameSetting.LoginAPIURI);
-
-            APIRequestLogin login = new APIRequestLogin();
-            login.udid = uuid;
-
-            string json = await PostRequest(request, login);
-            var res = GetPacketBody<APIResponceLogin>(json);
-            _session = res.session;
-            _token = res.token;
-            return res;
+            T request = new T();
+            request.session = _session;
+            request.token = _token;
+            return request;
         }
 
         public async UniTask<APIResponceGetCards> GetCards()
@@ -72,50 +68,6 @@ namespace Outgame
 
             string json = await GetRequest(request);
             var res = GetPacketBody<APIResponceGetQuests>(json);
-            return res;
-        }
-
-        public async UniTask<APIResponceUserCreate> CreateUser(string name)
-        {
-            string request = string.Format("{0}/user/create", GameSetting.GameAPIURI);
-
-            APIRequestUserCreate user = new APIRequestUserCreate();
-            user.name = name;
-            user.session = _session;
-            user.token = _token;
-
-            string json = await PostRequest(request, user);
-            var res = GetPacketBody<APIResponceUserCreate>(json);
-            return res;
-        }
-
-        public async UniTask<APIResponceGachaDraw> Gacha(int gachaId, int drawCount)
-        {
-            string request = string.Format("{0}/gacha/draw", GameSetting.GameAPIURI);
-
-            APIRequestGachaDraw gacha = new APIRequestGachaDraw();
-            gacha.gachaId = gachaId;
-            gacha.drawCount = drawCount;
-            gacha.session = _session;
-            gacha.token = _token;
-
-            string json = await PostRequest(request, gacha);
-            var res = GetPacketBody<APIResponceGachaDraw>(json);
-            return res;
-        }
-
-        public async UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials materials)
-        {
-            string request = string.Format("{0}/enhance", GameSetting.GameAPIURI);
-
-            APIRequestEnhance enhance = new APIRequestEnhance();
-            enhance.baseId = baseId;
-            enhance.materials = materials;
-            enhance.session = _session;
-            enhance.token = _token;
-
-            string json = await PostRequest(request, enhance);
-            var res = GetPacketBody<APIResponceEnhance>(json);
             return res;
         }
     }
