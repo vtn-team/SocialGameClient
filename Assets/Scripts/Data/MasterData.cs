@@ -192,7 +192,7 @@ namespace MD
                 d.MovePoint = q.MovePoint;
                 _quests.Add(d);
             }
-            Debug.Log(_quests.Count());
+
             _chapters.Clear();
             foreach (var c in chapter.Data)
             {

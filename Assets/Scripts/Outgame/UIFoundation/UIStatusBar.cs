@@ -72,10 +72,6 @@ namespace Outgame
                 long maxHealTime = UserModel.PlayerInfo.LastPointUpdate + targetPoint * 1000 * 60;
                 long now = GetCurrentUnixTime();
 
-                Debug.Log(now);
-                Debug.Log(UserModel.PlayerInfo.LastPointUpdate);
-                Debug.Log(maxHealTime);
-                Debug.Log(maxHealTime-now);
                 _movePoint = UserModel.PlayerInfo.MovePoint + Mathf.FloorToInt((now - UserModel.PlayerInfo.LastPointUpdate) / 1000 / 60);
 
                 if (_movePoint > UserModel.PlayerInfo.MovePointMax) _movePoint = UserModel.PlayerInfo.MovePointMax;
@@ -83,11 +79,11 @@ namespace Outgame
                 _moveGauge.fillAmount = (float)UserModel.PlayerInfo.MovePoint / UserModel.PlayerInfo.MovePointMax;
 
                 //時刻使った方がスマートだけど今回は
-                _moveHealTime.text = string.Format("MovePt:{0} 全回復まであと{1}:{2}", _movePoint, Mathf.FloorToInt((maxHealTime-now)/1000/60), ((maxHealTime - now) / 1000) % 60);
+                _moveHealTime.text = string.Format("{0}Pt 全回復まであと{1}:{2}", _movePoint, Mathf.FloorToInt((maxHealTime-now)/1000/60), ((maxHealTime - now) / 1000) % 60);
             }
             else
             {
-                _moveHealTime.text = string.Format("MovePt:{0}", UserModel.PlayerInfo.MovePoint);
+                _moveHealTime.text = string.Format("{0}Pt", UserModel.PlayerInfo.MovePoint);
             }
 
             //AttackPointは値変わらないので後で
