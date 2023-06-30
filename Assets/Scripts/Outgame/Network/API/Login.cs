@@ -26,6 +26,14 @@ namespace Outgame
         public string udid;
         public string name;
 
+        public int rank;
+        public int money;
+        public int movePoint;
+        public int attackPoint;
+
+        public long lastPointUpdate;
+        public string questTransaction;
+
         public string game_state;
     }
 

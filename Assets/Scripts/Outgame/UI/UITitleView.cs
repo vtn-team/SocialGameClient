@@ -39,6 +39,7 @@ namespace Outgame
                 }
 
                 package.Login = login;
+                UserModel.UpdatePlayerInfo(login);
 
                 UniTask.Post(GoHome);
 
