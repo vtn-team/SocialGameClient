@@ -18,9 +18,10 @@ namespace Outgame
         [SerializeField] TMPro.TextMeshProUGUI _movePoint;
         QuestData _questInfo;
 
+        public int QuestId => _questId;
         public QuestData Info => _questInfo;
         int _questId;
-        Quest _questData;
+        MD.Quest _questData;
 
         public void SetupQuestData(int questId, QuestData data)
         {
@@ -46,7 +47,7 @@ namespace Outgame
 
         protected override void OnClick()
         {
-            _evt?.Invoke(0, _questId);
+            _evt?.Invoke((int)QuestListView.BoardType.Quest, _questId);
         }
 
         public override void SetBudge(int bindex)

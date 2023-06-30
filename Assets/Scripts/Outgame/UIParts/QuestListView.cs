@@ -19,8 +19,16 @@ namespace Outgame
         [SerializeField] GameObject _questStackPrefab;
         [SerializeField] GameObject _questPrefab;
 
-        List<ListItemChapterBoard> _chapterBoardList = new List<ListItemChapterBoard>();
+        public enum BoardType
+        {
+            Chapter,
+            Quest
+        }
+        List<List<GameObject>> _childList = new List<List<GameObject>>();
+        List<ListItemQuestBoard> _questList = new List<ListItemQuestBoard>();
         Ready _callback;
+        int _selectedQuestId = -1;
+
 
         /// <summary>
         /// ビューを作る
@@ -31,81 +39,83 @@ namespace Outgame
             _itemList.Clear();
             _scrollPos = 0;
 
-
-            /*
             var chapters = MasterData.Chapters;
-            //クエスト
+            var questList = QuestListModel.QuestList.List;
+
+            //チャプターとその子供になるクエストをリストに入れる
             for (int i = 0; i < chapters.Count; ++i)
             {
                 var chapter = GameObject.Instantiate(_chapterPrefab, _content.RectTransform);
                 var listItem = ListItemBase.ListItemSetup<ListItemChapterBoard>(i, chapter, (int evtId, int index) => OnItemClick(evtId, index));
                 listItem.SetupChapterData(chapters[i]);
 
-                _chapterBoardList.Add(listItem);
                 _itemList.Add(listItem);
                 _lineList.Add(listItem.gameObject);
-            }
-            */
 
-            var questList = QuestListModel.QuestList.List;
-            var quests = MasterData.Quests;
-            for (int i = 0; i < quests.Count; ++i)
-            {
-                var quest = GameObject.Instantiate(_questPrefab, _content.RectTransform);
-                var listItem = ListItemBase.ListItemSetup<ListItemQuestBoard>(i, quest, (int evtId, int index) => OnItemClick(evtId, index));
-                listItem.SetupQuestData(quests[i].Id, questList.Where(q => q.QuestId == quests[i].Id).FirstOrDefault());
+                _childList.Add(new List<GameObject>());
 
-                _itemList.Add(listItem);
-                _lineList.Add(listItem.gameObject);
+                //クエストは非表示で作る
+                for (int q = 0; q < chapters[i].QuestList.Count; ++q)
+                {
+                    var quest = GameObject.Instantiate(_questPrefab, _content.RectTransform);
+                    var listItem2 = ListItemBase.ListItemSetup<ListItemQuestBoard>(_questList.Count, quest, (int evtId, int index) => OnItemClick(evtId, index));
+                    listItem2.SetupQuestData(chapters[i].QuestList[q].Id, questList.Where(qi => qi.QuestId == chapters[i].QuestList[q].Id).FirstOrDefault());
+                    listItem2.gameObject.SetActive(false);
+
+                    _questList.Add(listItem2);
+                    _itemList.Add(listItem2);
+                    _lineList.Add(listItem2.gameObject);
+
+                    _childList[i].Add(listItem2.gameObject);
+                }
             }
 
             //サイズ計算して最大スクロール値を決める
-            _content.RectTransform.sizeDelta = new Vector2(800, (_itemList.Count + 1) * CardUIHeight);
+            //クエストはサイズ可変するので毎回再計算する
+            _content.RectTransform.sizeDelta = new Vector2(800, (_lineList.Where(go => go.activeSelf).Count() + 1) * CardUIHeight);
 
             //イベント登録
             _rect.onValueChanged.AddListener(ScrollUpdate);
         }
+
+
 
         public void SetReadyCallback(Ready cb)
         {
             _callback = cb;
         }
 
-        public void CreateQuestStack(int index)
-        {
-            if (_chapterBoardList[index].HasQuestStack) return;
-
-            GameObject questStack = GameObject.Instantiate(_questStackPrefab, _lineList[index].transform);
-
-            var chapters = MasterData.Chapters;
-            var questList = QuestListModel.QuestList.List;
-
-            //クエスト
-            Debug.Log(MasterData.Quests.Where(q => q.ChapterId == chapters[index].Id).Count());
-            for (int i = 0; i < chapters[index].QuestList.Count; ++i)
-            {
-                var chapter = GameObject.Instantiate(_questPrefab, questStack.transform);
-                var listItem = ListItemBase.ListItemSetup<ListItemQuestBoard>(i, chapter, (int evtId, int index) => OnItemClick(evtId, index));
-                listItem.SetupQuestData(chapters[index].QuestList[i].Id, questList.Where(q => q.QuestId == chapters[index].QuestList[i].Id).FirstOrDefault());
-            }
-
-            _chapterBoardList[index].SetQuestStack(questStack);
-        }
-
-        int _selectedIndex = -1;
         protected override void OnItemClick(int evtId, int index)
         {
-            //出撃確認
-            _selectedIndex = index;
-            UICommonDialog.OpenYesNoDialog("出撃します", "よかったらOK", DialogDecide, "UIGoQuest", "UINoQuest");
+            switch((BoardType)evtId)
+            {
+                //チャプターを押した場合はクエストを出す
+                case BoardType.Chapter:
+                    {
+                        //非表示切替
+                        _childList[index].ForEach(c => c.SetActive(!c.activeSelf));
+
+                        //サイズ計算して最大スクロール値を決める
+                        //クエストはサイズ可変するので毎回再計算する
+                        _content.RectTransform.sizeDelta = new Vector2(800, (_lineList.Where(go => go.activeSelf).Count() + 1) * CardUIHeight);
+                    }
+                    break;
+
+                //出撃確認
+                case BoardType.Quest:
+                    {
+                        _selectedQuestId = _questList[index].QuestId;
+                        UICommonDialog.OpenYesNoDialog("出撃します", "よかったらOK", DialogDecide, "UIGoQuest", "UINoQuest");
+                    }
+                    break;
+            }
         }
 
         void DialogDecide(int type)
         {
-            var quests = MasterData.Quests;
             if (type == 1)
             {
-                _callback?.Invoke(quests[_selectedIndex].Id);
+                _callback?.Invoke(_selectedQuestId);
             }
         }
     }
