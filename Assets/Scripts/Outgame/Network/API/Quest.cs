@@ -30,7 +30,6 @@ namespace Outgame
     public class APIRequestQuestResult : APIRequestBase
     {
         public string transactionId;
-        public int questId;
         public int result;
     }
 
@@ -58,12 +57,11 @@ namespace Outgame
             return res;
         }
 
-        public async UniTask<APIResponceQuestResult> QuestResult(int questId, int result)
+        public async UniTask<APIResponceQuestResult> QuestResult(int result)
         {
             string request = string.Format("{0}/quest/result", GameSetting.GameAPIURI);
 
             var quest = CreateRequest<APIRequestQuestResult>();
-            quest.questId = questId;
             quest.result = result;
             quest.transactionId = _questTransaction;
 
@@ -82,7 +80,7 @@ namespace Outgame
             return await LocalData.LoadAsync<APIResponceQuestStart>("DummyPacket/questStart.json", GameSetting.DataPath, false);
         }
 
-        public async UniTask<APIResponceQuestResult> QuestResult(int questId, int result)
+        public async UniTask<APIResponceQuestResult> QuestResult(int result)
         {
             //※未実装！！
             return await LocalData.LoadAsync<APIResponceQuestResult>("DummyPacket/questresult.json", GameSetting.DataPath, false);

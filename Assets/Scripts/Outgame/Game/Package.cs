@@ -20,9 +20,9 @@ namespace Outgame
         public APIResponceGachaDraw Gacha { get; set; }
     }
 
-    public class QuestStartPackage : SequencePackage
+    public class QuestPackage : SequencePackage
     {
-        public APIResponceQuestStart Gacha { get; set; }
+        public APIResponceQuestResult QuestResult { get; set; }
     }
 
 }

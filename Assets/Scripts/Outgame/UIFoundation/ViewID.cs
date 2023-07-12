@@ -13,6 +13,7 @@ namespace Outgame
 
         Home = 100,
         Quest,
+        QuestResult,
         CardList,
         Enhance,
         GachaResult,

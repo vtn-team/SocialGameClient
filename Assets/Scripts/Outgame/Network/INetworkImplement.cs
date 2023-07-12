@@ -17,5 +17,5 @@ public interface IGameAPIImplement
     UniTask<APIResponceGachaDraw> Gacha(int gachaId, int drawCount);
     UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials msterials);
     UniTask<APIResponceQuestStart> QuestStart(int questId);
-    UniTask<APIResponceQuestResult> QuestResult(int questId, int result);
+    UniTask<APIResponceQuestResult> QuestResult(int result);
 }
