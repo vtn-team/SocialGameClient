@@ -75,6 +75,17 @@ namespace MD
     }
 
     [Serializable]
+    public class EventData
+    {
+        public int Id;
+        public string Name;
+        public string Resource;
+        public string StartAt;
+        public string GameEndAt;
+        public string EndAt;
+    }
+
+    [Serializable]
     public class CardMaster : MasterDataBase
     {
         public CardData[] Data;
@@ -96,6 +107,12 @@ namespace MD
     public class QuestMaster : MasterDataBase
     {
         public QuestData[] Data;
+    }
+
+    [Serializable]
+    public class EventMaster : MasterDataBase
+    {
+        public EventData[] Data;
     }
 
 
@@ -161,5 +178,15 @@ namespace MD
         public string Name;
         public string Resource;
         public int MovePoint;
+    }
+
+    public class GameEvent
+    {
+        public int Id;
+        public string Name;
+        public string Resource;
+        public DateTime StartAt;
+        public DateTime GameEndAt;
+        public DateTime EndAt;
     }
 }

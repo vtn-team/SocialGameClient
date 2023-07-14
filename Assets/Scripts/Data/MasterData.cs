@@ -67,16 +67,19 @@ namespace MD
         //公開マスターデータ
         static public List<Chapter> Chapters => _instance._chapters;
         static public List<Quest> Quests => _instance._quests;
+        static public List<GameEvent> Events => _instance._events;
 
         //マスターデータたち
         List<Chapter> _chapters = new List<Chapter>();
         List<Quest> _quests = new List<Quest>();
+        List<GameEvent> _events = new List<GameEvent>();
 
         //NOTE: そもそもコードで参照するのであればべた書きもあり
         PrettyData<int, Card> _cardMaster = new PrettyData<int, Card>();
         PrettyData<int, Chapter> _chapterMaster = new PrettyData<int, Chapter>();
         PrettyData<int, Quest> _questMaster = new PrettyData<int, Quest>();
         PrettyData<int, Item> _itemMaster = new PrettyData<int, Item>();
+        PrettyData<int, GameEvent> _eventMaster = new PrettyData<int, GameEvent>();
         PrettyData<string, TextData> _textMaster = new PrettyData<string, TextData>();
 
         //読み込み管理
@@ -121,6 +124,7 @@ namespace MD
                 LoadMasterData<CardMaster>("Card"),
                 LoadMasterData<ChapterMaster>("Chapter"),
                 LoadMasterData<QuestMaster>("Quest"),
+                LoadMasterData<EventMaster>("Event"),
                 LoadMasterData<ItemMaster>("Item"),
                 LoadMasterData<EffectMaster>("Effect"),
             };
@@ -149,6 +153,7 @@ namespace MD
             var chapter = await LocalData.LoadAsync<ChapterMaster>(GetFileName("Chapter"));
             var quest = await LocalData.LoadAsync<QuestMaster>(GetFileName("Quest"));
             var effect = await LocalData.LoadAsync<EffectMaster>(GetFileName("Effect"));
+            var evt = await LocalData.LoadAsync<EventMaster>(GetFileName("Event"));
             var efectList = PrettyData<int, EffectData>.Create(effect.Data, (EffectData line) => { return line.Id; });
 
             List<Card> cards = new List<Card>();
@@ -179,6 +184,22 @@ namespace MD
                 items.Add(d);
             }
             _itemMaster = PrettyData<int, Item>.Create(items.ToArray(), (Item line) => { return line.Id; });
+
+            //イベントマスタを整形する
+            _events.Clear();
+            foreach (var ev in evt.Data)
+            {
+                //カードデータを組み合わせていく
+                GameEvent d = new GameEvent();
+                d.Id = ev.Id;
+                d.Name = ev.Name;
+                d.Resource = ev.Resource;
+                d.StartAt = DateTime.Parse(ev.StartAt);
+                d.GameEndAt = DateTime.Parse(ev.GameEndAt);
+                d.EndAt = DateTime.Parse(ev.EndAt);
+                _events.Add(d);
+            }
+            _eventMaster = PrettyData<int, GameEvent>.Create(_events.ToArray(), (GameEvent line) => { return line.Id; });
 
             //クエストマスタをマージしていく
             _quests.Clear();
@@ -298,6 +319,17 @@ namespace MD
         {
             return _instance._questMaster.GetData(Id);
         }
+
+        /// <summary>
+        /// イベントデータ取得
+        /// </summary>
+        /// <param name="Id">イベントId</param>
+        /// <returns>イベント情報</returns>
+        static public GameEvent GetEvent(int Id)
+        {
+            return _instance._eventMaster.GetData(Id);
+        }
+
 
 #if UNITY_EDITOR
         static public string[] GetTextKeys()

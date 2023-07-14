@@ -21,6 +21,10 @@ namespace Outgame
             base.Enter();
 
             UIStatusBar.Show();
+
+            Debug.Log(EventHelper.GetAllOpenedEvent());
+            Debug.Log(EventHelper.IsEventOpen(1));
+            Debug.Log(EventHelper.IsEventGamePlayable(1));
         }
 
         public void GoGacha()
