@@ -17,10 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: dfcbdc6e9f428f74288956a7da96c46a
   m_SerializeEntries:
-  - m_GUID: 83a40d1fcf6924344a013377bd8112b2
-    m_Address: Assets/Scenes/Data/Event01/Event.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: aebbe02dbeb6e394ca7149ef97e1800e
     m_Address: Assets/Scenes/Data/Gacha/NormalGacha.prefab
     m_ReadOnly: 0

@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Game/UI/Quest.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 532093c6b8f1ee64e830b0b75f21ceb8
+    m_Address: Assets/Scenes/Game/UI/QuestResult.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:
