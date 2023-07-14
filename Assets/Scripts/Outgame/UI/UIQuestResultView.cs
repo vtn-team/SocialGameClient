@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -12,6 +13,9 @@ namespace Outgame
 {
     public class UIQuestResultView : UIStackableView
     {
+        [SerializeField] GameObject _root;
+        [SerializeField] GameObject _rewardPrefab;
+
         int _questId = 0;
 
         protected override void AwakeCall()
@@ -22,37 +26,38 @@ namespace Outgame
             CreateView();
         }
 
+        string GetRewardObjectString(APIResponceQuestReward reward)
+        {
+            string ret = "";
+            switch((RewardItemType)reward.type)
+            {
+            case RewardItemType.None: break;
+            case RewardItemType.Card: ret = MasterData.GetCard(int.Parse(reward.param[0])).Name; break;
+            case RewardItemType.Money: ret = string.Format("{0}Money", int.Parse(reward.param[0])); break;
+            case RewardItemType.Item: ret = string.Format("{0}{1}つ", int.Parse(reward.param[0]), int.Parse(reward.param[1])); break;
+
+            //TODO: イベントポイント
+            //case RewardItemType.EventPoint: ret = string.Format("{0}ポイント", int.Parse(reward.param[0])); break;
+            }
+            return ret;
+        }
+
         void CreateView()
         {
             var package = SequenceBridge.GetSequencePackage<QuestPackage>("Quest");
 
-            //
-            //package.QuestResult
-
-            /*
-            foreach (var card in )
+            foreach (var reward in package?.QuestResult?.rewards)
             {
-                Debug.Log(card);
-                var cardObj = GameObject.Instantiate(_card, this.RectTransform);
-                var image = cardObj.GetComponent<CardImage>();
-                image.Setup(card.cardId);
-                image.Load();
-                _cardImages.Add(image);
+                Debug.Log(reward);
+                if (reward.type == 0) continue;
+
+                var rewardObj = GameObject.Instantiate(_rewardPrefab, _root.transform);
+                var text = rewardObj.GetComponent<TextMeshProUGUI>();
+
+                text.text = string.Format("{0}を手に入れた", GetRewardObjectString(reward));
             }
 
-            //ザル
-            if (_cardImages.Count() == 10)
-            {
-                for (int i = 0; i < 5; ++i)
-                {
-                    _cardImages[i].RectTransform.localPosition = new Vector3(-620 + i * 300, -150, 0);
-                }
-                for (int i = 5; i < 10; ++i)
-                {
-                    _cardImages[i].RectTransform.localPosition = new Vector3(-620 + (i - 5) * 300, 150, 0);
-                }
-            }
-            */
+            SequenceBridge.DeleteSequence("Quest");
         }
 
         public void GoHome()

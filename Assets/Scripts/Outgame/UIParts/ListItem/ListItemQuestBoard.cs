@@ -47,7 +47,7 @@ namespace Outgame
 
         protected override void OnClick()
         {
-            _evt?.Invoke((int)QuestListView.BoardType.Quest, _questId);
+            _evt?.Invoke((int)QuestListView.BoardType.Quest, _index);
         }
 
         public override void SetBudge(int bindex)

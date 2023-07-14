@@ -10,6 +10,15 @@ using UnityEngine.Assertions;
 
 namespace Outgame
 {
+    enum RewardItemType
+    {
+        None,
+        Card,
+        Money,
+        Item,
+        EventPoint = 10
+    }
+
     [Serializable]
     public class ItemData
     {

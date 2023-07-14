@@ -12,6 +12,13 @@ using static Network.WebRequest;
 namespace Outgame
 {
     [Serializable]
+    public class APIResponceQuestReward : APIRequestBase
+    {
+        public int type;
+        public string[] param;
+    }
+
+    [Serializable]
     public class APIRequestQuestStart : APIRequestBase
     {
         public int questId;
@@ -36,7 +43,7 @@ namespace Outgame
     [Serializable]
     public class APIResponceQuestResult : APIResponceBase
     {
-        //APIResponceQuestReward[] rewards; //TODO: 実際は報酬を返す
+        public APIResponceQuestReward[] rewards;
     }
 
 
