@@ -32,9 +32,9 @@ namespace Outgame
             switch((RewardItemType)reward.type)
             {
             case RewardItemType.None: break;
-            case RewardItemType.Card: ret = MasterData.GetCard(int.Parse(reward.param[0])).Name; break;
+            case RewardItemType.Card: ret = MasterData.GetLocalizedText(MasterData.GetCard(int.Parse(reward.param[0])).Name); break;
             case RewardItemType.Money: ret = string.Format("{0}Money", int.Parse(reward.param[0])); break;
-            case RewardItemType.Item: ret = string.Format("{0}{1}つ", int.Parse(reward.param[0]), int.Parse(reward.param[1])); break;
+            case RewardItemType.Item: ret = string.Format("{0}{1}つ", MasterData.GetLocalizedText(MasterData.GetItem(int.Parse(reward.param[0])).Name), int.Parse(reward.param[1])); break;
 
             //TODO: イベントポイント
             //case RewardItemType.EventPoint: ret = string.Format("{0}ポイント", int.Parse(reward.param[0])); break;
