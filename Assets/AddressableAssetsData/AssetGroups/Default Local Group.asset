@@ -45,6 +45,22 @@ MonoBehaviour:
     m_Address: Assets/Scenes/Game/UI/QuestResult.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0707873a919fadf499e26974ffcd0cc5
+    m_Address: Assets/Prefabs/Information/InfoText.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 840534200eb630044a861329edecfaa7
+    m_Address: Assets/Scenes/Game/UI/Information.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4b7c1248259cc8549a5b4fea43b774d9
+    m_Address: Assets/Prefabs/Information/InfoSpacer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42ec275611eba014183c274093facc08
+    m_Address: Assets/Prefabs/Information/ListItem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:

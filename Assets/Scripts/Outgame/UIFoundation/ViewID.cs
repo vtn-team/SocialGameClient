@@ -23,6 +23,7 @@ namespace Outgame
 
         CommonDialog = 500,
         CardInfo,
+        Information,
 
         Event = 10000,
     }

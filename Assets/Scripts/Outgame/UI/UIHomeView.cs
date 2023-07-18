@@ -47,6 +47,11 @@ namespace Outgame
             UIManager.NextView(ViewID.Quest);
         }
 
+        public void OpenInformation()
+        {
+            UIManager.StackView(ViewID.Information);
+        }
+
 
 
         public void DialogTest()

@@ -13,6 +13,8 @@ public interface IGameAPIImplement
     UniTask<APIResponceGetCards> GetCards();
     UniTask<APIResponceGetItems> GetItems();
     UniTask<APIResponceGetQuests> GetQuests();
+    UniTask<APIResponceGetInfomationList> GetInformationList();
+    UniTask<APIResponceGetInfomation> GetInformation(string id);
     UniTask<APIResponceUserCreate> UserCreate(string name);
     UniTask<APIResponceGachaDraw> Gacha(int gachaId, int drawCount);
     UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials msterials);
