@@ -23,6 +23,7 @@ namespace Outgame
     public class QuestPackage : SequencePackage
     {
         public APIResponceQuestResult QuestResult { get; set; }
+        public bool IsEventQuest { get; set; }
     }
 
 }

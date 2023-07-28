@@ -45,7 +45,7 @@ namespace Outgame
         public void GoEventQuest()
         {
             if (!_isEventEnable) return;
-            UIManager.NextView(ViewID.Quest);
+            UIManager.NextView(ViewID.Quest, new UIQuestInformation() { FromEvent = true });
         }
 
         public void GoBackHome()

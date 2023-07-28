@@ -28,7 +28,15 @@ namespace Outgame
         List<ListItemQuestBoard> _questList = new List<ListItemQuestBoard>();
         Ready _callback;
         int _selectedQuestId = -1;
+        UIQuestInformation _info = null;
 
+        /// <summary>
+        /// 設定からビューの挙動を変える
+        /// </summary>
+        public void SetQuestInformation(UIQuestInformation info)
+        {
+            _info = info;
+        }
 
         /// <summary>
         /// ビューを作る
@@ -43,31 +51,39 @@ namespace Outgame
             var questList = QuestListModel.QuestList.List;
 
             //チャプターとその子供になるクエストをリストに入れる
-            for (int i = 0; i < chapters.Count; ++i)
+            var listIndex = 0;
+            foreach(var info in chapters)
             {
+                //条件
+                // TODO:もっといいやり方がある
+                if (_info != null && _info.FromEvent && info.Id < 100) continue;
+                if (_info != null && !_info.FromEvent && info.Id >= 100) continue;
+                if (_info == null && info.Id >= 100) continue;
+
                 var chapter = GameObject.Instantiate(_chapterPrefab, _content.RectTransform);
-                var listItem = ListItemBase.ListItemSetup<ListItemChapterBoard>(i, chapter, (int evtId, int index) => OnItemClick(evtId, index));
-                listItem.SetupChapterData(chapters[i]);
+                var listItem = ListItemBase.ListItemSetup<ListItemChapterBoard>(listIndex, chapter, (int evtId, int index) => OnItemClick(evtId, index));
+                listItem.SetupChapterData(info);
 
                 _itemList.Add(listItem);
                 _lineList.Add(listItem.gameObject);
-
                 _childList.Add(new List<GameObject>());
 
                 //クエストは非表示で作る
-                for (int q = 0; q < chapters[i].QuestList.Count; ++q)
+                for (int q = 0; q < info.QuestList.Count; ++q)
                 {
                     var quest = GameObject.Instantiate(_questPrefab, _content.RectTransform);
                     var listItem2 = ListItemBase.ListItemSetup<ListItemQuestBoard>(_questList.Count, quest, (int evtId, int index) => OnItemClick(evtId, index));
-                    listItem2.SetupQuestData(chapters[i].QuestList[q].Id, questList.Where(qi => qi.QuestId == chapters[i].QuestList[q].Id).FirstOrDefault());
+                    listItem2.SetupQuestData(info.QuestList[q].Id, questList.Where(qi => qi.QuestId == info.QuestList[q].Id).FirstOrDefault());
                     listItem2.gameObject.SetActive(false);
 
                     _questList.Add(listItem2);
                     _itemList.Add(listItem2);
                     _lineList.Add(listItem2.gameObject);
 
-                    _childList[i].Add(listItem2.gameObject);
+                    _childList[listIndex].Add(listItem2.gameObject);
                 }
+
+                listIndex++;
             }
 
             //サイズ計算して最大スクロール値を決める
