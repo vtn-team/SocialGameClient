@@ -61,6 +61,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Information/ListItem.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a3c59f00e016ba54f82f78bd9af063f7
+    m_Address: Assets/Scenes/Game/UI/EventHome.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0e62373f13da44441a89f75854422d75
+    m_Address: Assets/Scenes/Game/UI/EventRanking.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: daffd8acf4f4ea34d93f9dfd75bdfece, type: 2}
   m_SchemaSet:
