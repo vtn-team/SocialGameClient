@@ -60,3 +60,6 @@ crashlytics-build.properties
 
 Assets/Scripts/MessagePack/
 Assets/Plugins/
+Assets/Firebase/
+Assets/Editor Default Resources/
+Assets/ExternalDependencyManager/

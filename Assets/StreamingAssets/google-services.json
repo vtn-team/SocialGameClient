@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "233973544679",
+    "project_id": "vtn-socialgame",
+    "storage_bucket": "vtn-socialgame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:233973544679:android:38c7dee48dac92a4ca1442",
+        "android_client_info": {
+          "package_name": "com.nyangame.socialgamesample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "233973544679-idde5p56c8qf4qel8mscb36li0pvh9o1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_nnLa-RVASZsOoGI2Mjv_s6nMoOSNlts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "233973544679-idde5p56c8qf4qel8mscb36li0pvh9o1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "233973544679-3cmphcfius9drn52d4df8t5crf4j77gn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nyangame.socialgamesample"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

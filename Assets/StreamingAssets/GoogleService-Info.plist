@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>233973544679-3cmphcfius9drn52d4df8t5crf4j77gn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.233973544679-3cmphcfius9drn52d4df8t5crf4j77gn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCTPiukqHe3ydjnUzAp30ZXivtlHfr51yo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>233973544679</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.nyangame.socialgamesample</string>
+	<key>PROJECT_ID</key>
+	<string>vtn-socialgame</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vtn-socialgame.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:233973544679:ios:ef8b9f1c8713aba6ca1442</string>
+</dict>
+</plist>

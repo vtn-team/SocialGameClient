@@ -98,6 +98,8 @@ public class UIManager
         
         CreateUIParts(next);
 
+        FirebaseAnalyticsLogger.AnalyticsSceneView(next);
+
         view.Enter();
 
         if (!isStack && _current)

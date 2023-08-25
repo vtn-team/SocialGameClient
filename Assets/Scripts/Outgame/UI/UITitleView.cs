@@ -29,6 +29,9 @@ namespace Outgame
                 //ユーザ情報拾う
                 UserModel.Load();
 
+                //Firebase
+                FirebaseAnalyticsLogger.Setup(UserModel.GUID);
+
                 //ログインAPI
                 //NOTE: sessionとtokenを受け取るためにユーザがいなくてもloginを通す
                 var login = await GameAPI.API.Login(UserModel.GUID);
