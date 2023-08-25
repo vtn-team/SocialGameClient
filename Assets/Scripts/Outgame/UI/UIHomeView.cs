@@ -10,6 +10,7 @@ namespace Outgame
 {
     public class UIHomeView : UIStackableView
     {
+        [SerializeField] UIView _eventView;
         protected override void AwakeCall()
         {
             ViewId = ViewID.Home;
@@ -22,8 +23,12 @@ namespace Outgame
 
             UIStatusBar.Show();
 
-            Debug.Log(EventHelper.GetAllOpenedEvent());
-            Debug.Log(EventHelper.IsEventOpen(1));
+            //Debug.Log(EventHelper.GetAllOpenedEvent());
+            if(EventHelper.IsEventOpen(1))
+            {
+                _eventView.Active();
+            }
+
             Debug.Log(EventHelper.IsEventGamePlayable(1));
         }
 
@@ -50,6 +55,11 @@ namespace Outgame
         public void OpenInformation()
         {
             UIManager.StackView(ViewID.Information);
+        }
+
+        public void GoEvent()
+        {
+            UIManager.NextView(ViewID.EventHome);
         }
 
 

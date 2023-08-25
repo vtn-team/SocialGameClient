@@ -16,6 +16,7 @@ namespace Outgame
         [SerializeField] GameObject _root;
         [SerializeField] GameObject _rewardPrefab;
 
+        bool _isEventQuest = false;
         int _questId = 0;
 
         protected override void AwakeCall()
@@ -36,8 +37,13 @@ namespace Outgame
             case RewardItemType.Money: ret = string.Format("{0}Money", int.Parse(reward.param[0])); break;
             case RewardItemType.Item: ret = string.Format("{0}{1}つ", MasterData.GetLocalizedText(MasterData.GetItem(int.Parse(reward.param[0])).Name), int.Parse(reward.param[1])); break;
 
-            //TODO: イベントポイント
-            //case RewardItemType.EventPoint: ret = string.Format("{0}ポイント", int.Parse(reward.param[0])); break;
+            case RewardItemType.EventPoint:
+                    {
+                        int point = int.Parse(reward.param[0]);
+                        ret = string.Format("{0}ポイント", point);
+                        RankingEventModel.AppendPoint(point);
+                    }
+                    break;
             }
             return ret;
         }
@@ -57,12 +63,20 @@ namespace Outgame
                 text.text = string.Format("{0}を手に入れた", GetRewardObjectString(reward));
             }
 
+            _isEventQuest = package.IsEventQuest;
             SequenceBridge.DeleteSequence("Quest");
         }
 
         public void GoHome()
         {
-            UIManager.NextView(ViewID.Home);
+            if (_isEventQuest)
+            {
+                UIManager.NextView(ViewID.EventHome);
+            }
+            else
+            {
+                UIManager.NextView(ViewID.Home);
+            }
         }
     }
 }

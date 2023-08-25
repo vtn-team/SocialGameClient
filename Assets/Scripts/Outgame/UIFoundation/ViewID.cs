@@ -26,5 +26,7 @@ namespace Outgame
         Information,
 
         Event = 10000,
+        EventHome,
+        EventRanking,
     }
 }

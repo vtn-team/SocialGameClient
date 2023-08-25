@@ -20,4 +20,8 @@ public interface IGameAPIImplement
     UniTask<APIResponceEnhance> Enhance(int baseId, APIRequestEnhanceMaterials msterials);
     UniTask<APIResponceQuestStart> QuestStart(int questId);
     UniTask<APIResponceQuestResult> QuestResult(int result);
+
+    //イベント
+    UniTask<APIResponceEventStat> EventStat(int eventId);
+    UniTask<APIResponceEventRanking> EventRanking(int eventId, int rankingType);
 }
